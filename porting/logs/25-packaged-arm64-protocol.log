@@ -1,0 +1,45 @@
+✔ ten concurrent child load workers publish and archive 500 QoS 1 messages each (1902.749583ms)
+✔ username and password authenticate the connection worker before message delivery (7.964292ms)
+✔ an incorrect broker password emits a connection error without authorizing a session (1.036ms)
+✔ MQTT 3.1 connects with MQIsdp and exchanges QoS 2 messages (3.764083ms)
+✔ abrupt worker process termination publishes and retains its configured last will (85.030209ms)
+✔ the connection worker reconnects and restores wildcard delivery after socket loss (54.219667ms)
+✔ stop ends a QoS 1 load while the broker withholds PUBACK (242.017166ms)
+✔ timeout ends a QoS 1 load while the broker withholds PUBACK (360.071709ms)
+✔ stop ends a QoS 2 load while the broker withholds PUBCOMP (121.642917ms)
+✔ timeout ends a QoS 2 load while the broker withholds PUBCOMP (359.580375ms)
+✔ publish load counts 32 real broker messages at numeric QoS 0 (276.353667ms)
+✔ publish load counts 32 real broker messages at numeric QoS 1 (213.522417ms)
+✔ publish load counts 32 real broker messages at numeric QoS 2 (212.923834ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 0 (11.651084ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 1 (5.575625ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 2 (8.895917ms)
+✔ publish load accepts the UI's string QoS '1' (148.720959ms)
+✔ subscribe load accepts the UI's string QoS '1' (74.412958ms)
+✔ publish load accepts the UI's string QoS '2' (135.813334ms)
+✔ subscribe load accepts the UI's string QoS '2' (74.808ms)
+✔ stopping a running publish load reports partial real counts and ends once (154.4935ms)
+✔ an empty subscribe load times out with zero counts and no completion status (192.750208ms)
+✔ load worker delivers a large complete archive over child IPC before exiting (85.684791ms)
+✔ TLS custom CA validates the local broker certificate (24.593542ms)
+✔ TLS client-certificate mode authenticates the supplied key and certificate (3.781542ms)
+✔ self-signed mode explicitly accepts an untrusted server certificate (2.838041ms)
+(node:56072) [DEP0044] DeprecationWarning: The `util.isArray` API is deprecated. Please use `Array.isArray()` instead.
+(Use `MQTTBox --trace-deprecation ...` to show where the warning was created)
+✔ custom CA mode rejects a broker signed by a different authority (2.340709ms)
+✔ WebSocket transport exchanges MQTT messages on a URL path (21.684792ms)
+✔ secure WebSocket transport honors the configured CA (6.622208ms)
+✔ connection worker delivers QoS 0 and completes its protocol acknowledgement (44.25875ms)
+✔ connection worker delivers QoS 1 and completes its protocol acknowledgement (5.732667ms)
+✔ connection worker delivers QoS 2 and completes its protocol acknowledgement (4.416125ms)
+✔ wildcard subscriptions preserve the matching filter and unsubscribe removes delivery (142.854834ms)
+✔ a new subscription receives retained payload and its retained flag (3.628125ms)
+✔ connection worker exchanges messages and disconnects through real child IPC (80.607417ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2214.697417

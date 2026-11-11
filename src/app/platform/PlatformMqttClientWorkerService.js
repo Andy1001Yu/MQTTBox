@@ -12,9 +12,10 @@ class PlatformMqttClientWorkerService {  
     }
 
     processEvents(eventObj) {
-        process.send(eventObj);
         if(eventObj.event == MqttClientConstants.EVENT_MQTT_CLIENT_CONNECTION_CLOSED) {
-            process.exit();
+            process.send(eventObj, function() { process.exit(); });
+        } else {
+            process.send(eventObj);
         }
     }
 }

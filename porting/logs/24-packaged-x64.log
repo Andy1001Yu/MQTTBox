@@ -1,0 +1,8 @@
+Electron 45.3.0 x64; packaged=true
+Application: <WORKSPACE>/dist/mac/MQTTBox.app/Contents/Resources/app.asar
+MQTT worker 56221: <WORKSPACE>/dist/mac/MQTTBox.app/Contents/Resources/app.asar/build/platform/PlatformMqttClientWorkerService.js
+MQTT worker 56468: <WORKSPACE>/dist/mac/MQTTBox.app/Contents/Resources/app.asar/build/platform/PlatformMqttClientWorkerService.js
+Original updater requests intercepted by the local-only proxy: 2
+PASS: original UI, profile creation, QoS 2 publish/subscribe, main worker paths,
+      one-message load/data/graph, restart persistence and automatic reconnect.
+Screenshots: <WORKSPACE>/porting/screenshots/packaged-x64-*.png

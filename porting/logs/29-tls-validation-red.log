@@ -1,0 +1,56 @@
+(node:59751) [DEP0044] DeprecationWarning: The `util.isArray` API is deprecated. Please use `Array.isArray()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✖ CA-signed mode rejects an untrusted server certificate over mqtts (26.444209ms)
+✖ CA-signed mode rejects an untrusted server certificate over wss (27.743542ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 329.595333
+
+✖ failing tests:
+
+test at test/mqtt-tls.test.cjs:45:3
+✖ CA-signed mode rejects an untrusted server certificate over mqtts (26.444209ms)
+  AssertionError [ERR_ASSERTION]: the CA-signed setting must reject an untrusted peer instead of establishing a session
+  + actual - expected
+
+  + 'CONNECTED'
+  - 'CONNECT_ERROR'
+            ^
+
+      at TestContext.<anonymous> (<WORKSPACE>/test/mqtt-tls.test.cjs:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'CONNECTED',
+    expected: 'CONNECT_ERROR',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/mqtt-tls.test.cjs:45:3
+✖ CA-signed mode rejects an untrusted server certificate over wss (27.743542ms)
+  AssertionError [ERR_ASSERTION]: the CA-signed setting must reject an untrusted peer instead of establishing a session
+  + actual - expected
+
+  + 'CONNECTED'
+  - 'CONNECT_ERROR'
+            ^
+
+      at TestContext.<anonymous> (<WORKSPACE>/test/mqtt-tls.test.cjs:53:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'CONNECTED',
+    expected: 'CONNECT_ERROR',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

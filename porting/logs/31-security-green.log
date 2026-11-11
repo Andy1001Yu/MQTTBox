@@ -1,0 +1,45 @@
+✔ release check sends an anonymous, bounded HTTPS GET with redirects and credentials disabled (19.749625ms)
+▶ release notifications follow semantic version and prerelease precedence
+  ✔ v0.2.2-macos.2 compared with 0.2.2-macos.1 (0.367666ms)
+  ✔ v0.2.2-macos.10 compared with 0.2.2-macos.2 (0.269625ms)
+  ✔ v0.2.2 compared with 0.2.2-macos.1 (0.266ms)
+  ✔ v0.2.2+build-1 compared with 0.2.2-macos.1 (0.257625ms)
+  ✔ v0.2.2-macos.1+different-build compared with 0.2.2-macos.1 (0.259959ms)
+  ✔ v0.2.2-macos.1 compared with 0.2.2-macos.1 (0.2525ms)
+  ✔ v0.2.2-macos.0 compared with 0.2.2-macos.1 (0.268ms)
+  ✔ v0.2.1 compared with 0.2.2-macos.1 (0.267833ms)
+  ✔ v1.0.0 compared with 2.0.0 (0.290084ms)
+  ✔ v2.0.0 compared with 1.0.0 (0.244292ms)
+✔ release notifications follow semantic version and prerelease precedence (3.113708ms)
+▶ unavailable, redirected, or malformed release responses never notify or escape init
+  ✔ network failure (0.296667ms)
+  ✔ timeout (0.225875ms)
+  ✔ missing release (0.204416ms)
+  ✔ rate limit (0.188875ms)
+  ✔ unexpected status (0.203583ms)
+  ✔ unexpected response URL (0.209875ms)
+  ✔ HTML response (0.201208ms)
+  ✔ invalid JSON (0.200375ms)
+  ✔ null JSON (0.209459ms)
+  ✔ array JSON (0.202542ms)
+  ✔ missing tag (0.192583ms)
+  ✔ object tag (0.214959ms)
+  ✔ script tag (0.228291ms)
+  ✔ newline in tag (0.196833ms)
+  ✔ partial version (0.332292ms)
+  ✔ wildcard version (0.279875ms)
+  ✔ leading zero (0.227583ms)
+  ✔ leading prerelease zero (0.232125ms)
+  ✔ huge tag (0.235541ms)
+  ✔ draft release (0.184375ms)
+✔ unavailable, redirected, or malformed release responses never notify or escape init (4.872958ms)
+✔ external links open only HTTP and HTTPS URLs (0.33025ms)
+✔ displayed version follows the application manifest (0.336417ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 91.085333

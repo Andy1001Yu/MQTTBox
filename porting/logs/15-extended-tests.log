@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: ten concurrent child load workers publish and archive 500 QoS 1 messages each
+ok 1 - ten concurrent child load workers publish and archive 500 QoS 1 messages each
+  ---
+  duration_ms: 1837.37825
+  type: 'test'
+  ...
+# Subtest: username and password authenticate the connection worker before message delivery
+ok 2 - username and password authenticate the connection worker before message delivery
+  ---
+  duration_ms: 15.112333
+  type: 'test'
+  ...
+# Subtest: an incorrect broker password emits a connection error without authorizing a session
+ok 3 - an incorrect broker password emits a connection error without authorizing a session
+  ---
+  duration_ms: 1.223583
+  type: 'test'
+  ...
+# Subtest: MQTT 3.1 connects with MQIsdp and exchanges QoS 2 messages
+ok 4 - MQTT 3.1 connects with MQIsdp and exchanges QoS 2 messages
+  ---
+  duration_ms: 2.063875
+  type: 'test'
+  ...
+# Subtest: abrupt worker process termination publishes and retains its configured last will
+ok 5 - abrupt worker process termination publishes and retains its configured last will
+  ---
+  duration_ms: 79.512
+  type: 'test'
+  ...
+# Subtest: the connection worker reconnects and restores wildcard delivery after socket loss
+ok 6 - the connection worker reconnects and restores wildcard delivery after socket loss
+  ---
+  duration_ms: 52.861209
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2091.790375

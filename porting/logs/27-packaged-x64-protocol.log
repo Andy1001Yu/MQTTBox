@@ -1,0 +1,68 @@
+✖ ten concurrent child load workers publish and archive 500 QoS 1 messages each (17577.489708ms)
+✔ username and password authenticate the connection worker before message delivery (2235.859958ms)
+✔ an incorrect broker password emits a connection error without authorizing a session (347.812375ms)
+✔ MQTT 3.1 connects with MQIsdp and exchanges QoS 2 messages (694.394084ms)
+✔ abrupt worker process termination publishes and retains its configured last will (3451.4085ms)
+✔ the connection worker reconnects and restores wildcard delivery after socket loss (966.587542ms)
+✔ stop ends a QoS 1 load while the broker withholds PUBACK (3411.879208ms)
+✖ timeout ends a QoS 1 load while the broker withholds PUBACK (5447.184292ms)
+✔ stop ends a QoS 2 load while the broker withholds PUBCOMP (2646.288167ms)
+✖ timeout ends a QoS 2 load while the broker withholds PUBCOMP (5215.973084ms)
+✔ publish load counts 32 real broker messages at numeric QoS 0 (2532.553709ms)
+✔ publish load counts 32 real broker messages at numeric QoS 1 (1806.8235ms)
+✔ publish load counts 32 real broker messages at numeric QoS 2 (1017.639792ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 0 (1863.799ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 1 (1461.926458ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 2 (937.068375ms)
+✔ publish load accepts the UI's string QoS '1' (2662.928625ms)
+✔ subscribe load accepts the UI's string QoS '1' (2531.699084ms)
+✔ publish load accepts the UI's string QoS '2' (2009.045459ms)
+✔ subscribe load accepts the UI's string QoS '2' (2154.905542ms)
+✔ stopping a running publish load reports partial real counts and ends once (449.250333ms)
+✔ an empty subscribe load times out with zero counts and no completion status (300.490709ms)
+✔ load worker delivers a large complete archive over child IPC before exiting (2495.1915ms)
+✔ TLS custom CA validates the local broker certificate (2328.8715ms)
+✔ TLS client-certificate mode authenticates the supplied key and certificate (1236.119375ms)
+✔ self-signed mode explicitly accepts an untrusted server certificate (835.5875ms)
+(node:57444) [DEP0044] DeprecationWarning: The `util.isArray` API is deprecated. Please use `Array.isArray()` instead.
+(Use `MQTTBox --trace-deprecation ...` to show where the warning was created)
+✔ custom CA mode rejects a broker signed by a different authority (360.463625ms)
+✔ WebSocket transport exchanges MQTT messages on a URL path (2351.320708ms)
+✔ secure WebSocket transport honors the configured CA (2940.841458ms)
+✔ connection worker delivers QoS 0 and completes its protocol acknowledgement (1749.266334ms)
+✔ connection worker delivers QoS 1 and completes its protocol acknowledgement (1111.615417ms)
+✔ connection worker delivers QoS 2 and completes its protocol acknowledgement (941.139542ms)
+✔ wildcard subscriptions preserve the matching filter and unsubscribe removes delivery (2319.992292ms)
+✔ a new subscription receives retained payload and its retained flag (787.002416ms)
+✔ connection worker exchanges messages and disconnects through real child IPC (2230.157292ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 32
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 102240.021334
+
+✖ failing tests:
+
+test at test/mqtt-extended.test.cjs:23:1
+✖ ten concurrent child load workers publish and archive 500 QoS 1 messages each (17577.489708ms)
+  Error: Timed out waiting for child EVENT_MQTT_LOAD_TEST_ENDED:
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:259:47)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ timeout ends a QoS 1 load while the broker withholds PUBACK (5447.184292ms)
+  Error: Timed out waiting for acknowledgement-held
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ timeout ends a QoS 2 load while the broker withholds PUBCOMP (5215.973084ms)
+  Error: Timed out waiting for acknowledgement-held
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)

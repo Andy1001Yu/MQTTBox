@@ -63,6 +63,7 @@ class MqttLoadTestWorker extends Events.EventEmitter {  
 
     startLoadTest(data) {
         this.loadObj = data.loadObj;
+        this.loadObj.qos = Number(this.loadObj.qos);
         this.iId = data.iId;
         this.inum = data.inum;
         this.startRunTimer();
@@ -202,17 +203,19 @@ class MqttLoadTestWorker extends Events.EventEmitter {  
                 this.payloadCounter = 0;
             }
 
+            var publishedPayload = this.loadObj.payload[this.payloadCounter];
             if(this.loadObj.qos == 0) {
                 this.client.publish(this.loadObj.topic,this.loadObj.payload[this.payloadCounter],{qos:this.loadObj.qos,retain:false});
                 this.receivedMessages.push({time:+(new Date()),data:{messageId:'',payload:this.loadObj.payload[this.payloadCounter],qos:this.loadObj.qos,topic:this.loadObj.topic,inum:this.inum}});
                 this.qosReceivedMessCount++;
             } else {
-                this.client.publish(this.loadObj.topic,this.loadObj.payload[this.payloadCounter],{qos:this.loadObj.qos,retain:false},
-                    function(data,packet) {
+                this.client.publish(this.loadObj.topic,publishedPayload,{qos:this.loadObj.qos,retain:false},
+                    function(error,packet) {
+                        if(error) return;
                         if(packet == null) {
                             packet = {};
                         }
-                        this.receivedMessages.push({time:+(new Date()),data:{messageId:packet.messageId,payload:packet.payload,qos:this.loadObj.qos,topic:this.loadObj.topic,inum:this.inum}});
+                        this.receivedMessages.push({time:+(new Date()),data:{messageId:packet.messageId,payload:publishedPayload,qos:this.loadObj.qos,topic:this.loadObj.topic,inum:this.inum}});
                         this.qosReceivedMessCount++;
                         if(this.qosReceivedMessCount>=this.loadObj.msgCount) {
                             this.endLoadTest(MqttLoadConstants.STATE_SUCCESS,MqttLoadConstants.LOAD_COMPLETED);
@@ -249,16 +252,17 @@ class MqttLoadTestWorker extends Events.EventEmitter {  
             this.messageEndTime = +(new Date());
         }
 
-        this.client.end(true);
-
-        if(this.receivedMessages!=null && this.receivedMessages.length>0) {
-            var archiveData = {metaData:{iId:this.iId,inum:this.inum},receivedMessages:this.receivedMessages}
-            this.publishStatusWithSuccess({status:finalStatus,message:finalMessage,time:+(new Date())});
-            this.publishLoadTestEndMessage(archiveData);
-        } else {
-            this.publishStatusWithSuccess({status:finalStatus,message:finalMessage,time:+(new Date())});
-            this.publishLoadTestEndMessage();
-        }
+        // Flush successful QoS 0 writes; cancellation must not wait for lost ACKs.
+        this.client.end(finalStatus !== MqttLoadConstants.STATE_SUCCESS, function() {
+            if(this.receivedMessages!=null && this.receivedMessages.length>0) {
+                var archiveData = {metaData:{iId:this.iId,inum:this.inum},receivedMessages:this.receivedMessages}
+                this.publishStatusWithSuccess({status:finalStatus,message:finalMessage,time:+(new Date())});
+                this.publishLoadTestEndMessage(archiveData);
+            } else {
+                this.publishStatusWithSuccess({status:finalStatus,message:finalMessage,time:+(new Date())});
+                this.publishLoadTestEndMessage();
+            }
+        }.bind(this));
     }
 
     publishLoadTestEndMessage(archiveData) {

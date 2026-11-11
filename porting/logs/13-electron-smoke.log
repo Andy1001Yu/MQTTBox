@@ -1,0 +1,6 @@
+Electron 45.3.0 arm64; packaged=false
+Application: <WORKSPACE>
+SKIP: graph render (MQTTBOX_SKIP_GRAPH=1); load worker and data table still verified.
+PASS: original UI, profile creation, QoS 2 publish/subscribe, main worker paths,
+      one-message load/data, restart persistence and automatic reconnect.
+Screenshots: <WORKSPACE>/porting/screenshots/development-arm64-*.png

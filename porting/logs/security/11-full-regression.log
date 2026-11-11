@@ -1,0 +1,90 @@
+
+> MQTTBox@0.2.2-macos.1 test
+> npm run build && node --test test/*.test.cjs
+
+
+> MQTTBox@0.2.2-macos.1 build
+> node scripts/build.cjs
+
+Successfully compiled 52 files with Babel (298ms).
+✔ ten concurrent child load workers publish and archive 500 QoS 1 messages each (1897.2605ms)
+✔ username and password authenticate the connection worker before message delivery (11.295125ms)
+✔ an incorrect broker password emits a connection error without authorizing a session (0.980958ms)
+✔ MQTT 3.1 connects with MQIsdp and exchanges QoS 2 messages (1.62225ms)
+✔ abrupt worker process termination publishes and retains its configured last will (78.259459ms)
+✔ the connection worker reconnects and restores wildcard delivery after socket loss (54.547583ms)
+✔ stop ends a QoS 1 load while the broker withholds PUBACK (296.176375ms)
+✔ timeout ends a QoS 1 load while the broker withholds PUBACK (370.595125ms)
+✔ stop ends a QoS 2 load while the broker withholds PUBCOMP (138.621875ms)
+✔ timeout ends a QoS 2 load while the broker withholds PUBCOMP (363.285333ms)
+✔ publish load counts 32 real broker messages at numeric QoS 0 (276.896125ms)
+✔ publish load counts 32 real broker messages at numeric QoS 1 (210.814833ms)
+✔ publish load counts 32 real broker messages at numeric QoS 2 (218.338542ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 0 (5.102042ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 1 (6.387292ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 2 (9.917834ms)
+✔ publish load accepts the UI's string QoS '1' (147.45675ms)
+✔ subscribe load accepts the UI's string QoS '1' (83.071625ms)
+✔ publish load accepts the UI's string QoS '2' (141.145209ms)
+✔ subscribe load accepts the UI's string QoS '2' (85.223083ms)
+✔ stopping a running publish load reports partial real counts and ends once (155.211042ms)
+✔ an empty subscribe load times out with zero counts and no completion status (192.551584ms)
+✔ load worker delivers a large complete archive over child IPC before exiting (111.577792ms)
+✔ TLS custom CA validates the local broker certificate (34.189625ms)
+✔ TLS client-certificate mode authenticates the supplied key and certificate (4.567334ms)
+✔ CA-signed mode rejects an untrusted server certificate over mqtts (2.817625ms)
+✔ CA-signed mode rejects an untrusted server certificate over wss (19.011916ms)
+✔ custom CA mode rejects a broker signed by a different authority (2.449708ms)
+✔ WebSocket transport exchanges MQTT messages on a URL path (6.85175ms)
+✔ secure WebSocket transport honors the configured CA (5.271416ms)
+✔ connection worker delivers QoS 0 and completes its protocol acknowledgement (58.749167ms)
+✔ connection worker delivers QoS 1 and completes its protocol acknowledgement (8.381042ms)
+✔ connection worker delivers QoS 2 and completes its protocol acknowledgement (3.403417ms)
+✔ wildcard subscriptions preserve the matching filter and unsubscribe removes delivery (92.841666ms)
+✔ a new subscription receives retained payload and its retained flag (4.790792ms)
+✔ connection worker exchanges messages and disconnects through real child IPC (134.095083ms)
+✔ release check sends an anonymous, bounded HTTPS GET with redirects and credentials disabled (30.193375ms)
+▶ release notifications follow semantic version and prerelease precedence
+  ✔ v0.2.2-macos.2 compared with 0.2.2-macos.1 (0.86975ms)
+  ✔ v0.2.2-macos.10 compared with 0.2.2-macos.2 (0.680208ms)
+  ✔ v0.2.2 compared with 0.2.2-macos.1 (0.568625ms)
+  ✔ v0.2.2+build-1 compared with 0.2.2-macos.1 (0.667291ms)
+  ✔ v0.2.2-macos.1+different-build compared with 0.2.2-macos.1 (0.551875ms)
+  ✔ v0.2.2-macos.1 compared with 0.2.2-macos.1 (0.767084ms)
+  ✔ v0.2.2-macos.0 compared with 0.2.2-macos.1 (0.655209ms)
+  ✔ v0.2.1 compared with 0.2.2-macos.1 (0.5625ms)
+  ✔ v1.0.0 compared with 2.0.0 (0.781917ms)
+  ✔ v2.0.0 compared with 1.0.0 (0.619542ms)
+✔ release notifications follow semantic version and prerelease precedence (7.802625ms)
+▶ unavailable, redirected, or malformed release responses never notify or escape init
+  ✔ network failure (0.773334ms)
+  ✔ timeout (0.58625ms)
+  ✔ missing release (0.500708ms)
+  ✔ rate limit (0.583459ms)
+  ✔ unexpected status (0.722833ms)
+  ✔ unexpected response URL (0.6835ms)
+  ✔ HTML response (0.325167ms)
+  ✔ invalid JSON (0.496708ms)
+  ✔ null JSON (0.453791ms)
+  ✔ array JSON (0.564542ms)
+  ✔ missing tag (0.289875ms)
+  ✔ object tag (0.478416ms)
+  ✔ script tag (0.638375ms)
+  ✔ newline in tag (0.538375ms)
+  ✔ partial version (0.5255ms)
+  ✔ wildcard version (0.330291ms)
+  ✔ leading zero (0.416625ms)
+  ✔ leading prerelease zero (0.275208ms)
+  ✔ huge tag (0.309ms)
+  ✔ draft release (0.218083ms)
+✔ unavailable, redirected, or malformed release responses never notify or escape init (10.801625ms)
+✔ external links open only HTTP and HTTPS URLs (0.686417ms)
+✔ displayed version follows the application manifest (0.444666ms)
+ℹ tests 71
+ℹ suites 0
+ℹ pass 71
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2197.193167

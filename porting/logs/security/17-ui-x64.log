@@ -1,0 +1,17 @@
+Packaged startup GitHub CONNECT refused by the local-only proxy; routes will precede a safe reload.
+GitHub release check intercepted after reloading the proxy-protected packaged window.
+Electron 45.3.0 x64; packaged=true
+MQTTBox release: 0.2.2-macos.1
+Application: <WORKSPACE>/dist/mac/MQTTBox.app/Contents/Resources/app.asar
+PASS: the real page CSP blocks dynamically injected inline JavaScript.
+PASS: current jQuery and the three required Bootstrap modules loaded; unused plugins are absent.
+PASS: original menu dropdown opens and closes with real clicks.
+MQTT worker 77438: <WORKSPACE>/dist/mac/MQTTBox.app/Contents/Resources/app.asar/build/platform/PlatformMqttClientWorkerService.js
+PASS: received QoS 2 message details collapse and expand after animation.
+Packaged startup GitHub CONNECT refused by the local-only proxy; routes will precede a safe reload.
+GitHub release check intercepted after reloading the proxy-protected packaged window.
+MQTT worker 77519: <WORKSPACE>/dist/mac/MQTTBox.app/Contents/Resources/app.asar/build/platform/PlatformMqttClientWorkerService.js
+GitHub release checks handled by local routes: 2; packaged startup CONNECTs blocked locally: 2
+PASS: original UI, profile creation, QoS 2 publish/subscribe, main worker paths,
+      one-message load/data/graph, restart persistence and automatic reconnect.
+Screenshots: <WORKSPACE>/porting/screenshots/packaged-x64-*.png

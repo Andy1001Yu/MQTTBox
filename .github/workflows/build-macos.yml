@@ -1,0 +1,62 @@
+name: macOS build and security checks
+
+on:
+  push:
+    branches: [macos-modern]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: macOS ${{ matrix.arch }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x64
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --no-audit
+      - run: npm audit --audit-level=low
+      - run: npm test
+      - run: npm run test:electron
+      - name: Build native macOS installer
+        run: ./node_modules/.bin/electron-builder --mac dmg --${{ matrix.arch }} --publish never
+      - name: Verify installer contents and signature
+        run: python3 scripts/verify-macos-artifacts.py --arch ${{ matrix.arch }}
+      - name: Verify packaged application
+        env:
+          MQTTBOX_EXECUTABLE: ${{ github.workspace }}/dist/${{ matrix.arch == 'arm64' && 'mac-arm64' || 'mac' }}/MQTTBox.app/Contents/MacOS/MQTTBox
+        run: npm run test:electron
+      - name: Test packaged worker runtime
+        env:
+          ELECTRON_RUN_AS_NODE: '1'
+          MQTTBOX_EXECUTABLE: ${{ github.workspace }}/dist/${{ matrix.arch == 'arm64' && 'mac-arm64' || 'mac' }}/MQTTBox.app/Contents/MacOS/MQTTBox
+          MQTTBOX_TEST_BUILD_DIR: ${{ github.workspace }}/dist/${{ matrix.arch == 'arm64' && 'mac-arm64' || 'mac' }}/MQTTBox.app/Contents/Resources/app.asar/build
+        run: '"$MQTTBOX_EXECUTABLE" --test --test-concurrency=1 test/*.test.cjs'
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: MQTTBox-macos-${{ matrix.arch }}
+          if-no-files-found: warn
+          path: |
+            dist/*.dmg
+            dist/ARTIFACTS.json
+            dist/SHA256SUMS.txt
+            porting/screenshots/*.png

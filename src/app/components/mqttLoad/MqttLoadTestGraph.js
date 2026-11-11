@@ -113,7 +113,7 @@ class MqttLoadTestGraph extends Component {
                 minTime = Math.floor(_.minBy(allData['Instance'+this.state.instanceFilter].receivedMessages,function(o){return o.time;}).time);
                 maxTime = Math.floor(_.maxBy(allData['Instance'+this.state.instanceFilter].receivedMessages,function(o){return o.time;}).time);
             }
-            var timeSample = Math.floor((maxTime - minTime)/this.state.samplingRate);
+            var timeSample = Math.max(1, Math.floor((maxTime - minTime)/this.state.samplingRate));
             var timeSlices = [];
             var graphInstances = Object.keys(allData);
 

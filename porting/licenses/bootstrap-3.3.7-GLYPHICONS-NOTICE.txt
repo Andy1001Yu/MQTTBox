@@ -1,0 +1,16 @@
+Bootstrap 3.3.7 bundled Glyphicons Halflings — supplemental notice
+
+Original copyright notice (verbatim name-table record 0 in the bundled
+src/www/lib/bootstrap/fonts/glyphicons-halflings-regular.ttf):
+Copyright © 2014 by Jan Kovarik. All rights reserved.
+
+Glyphicons Halflings are included with Bootstrap 3.3.7. The versioned Bootstrap
+documentation states that the creator made the Halflings available for Bootstrap
+free of cost and requests a link back to Glyphicons whenever possible.
+Glyphicons: http://glyphicons.com/
+Versioned upstream documentation:
+https://github.com/twbs/bootstrap/blob/v3.3.7/docs/_includes/components/glyphicons.html
+
+Bootstrap's versioned repository license is preserved separately in
+bootstrap-3.3.7-LICENSE.txt. This supplemental note preserves the additional
+font author credit and does not invent or expand a standalone font license.

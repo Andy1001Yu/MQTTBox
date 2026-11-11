@@ -49,7 +49,7 @@ export default class AboutApp extends React.Component {
                     <div className="media">
                         <div style={styles.clickDiv} className="media-left">
                             <img style={{width:100,height:100}} className="media-object"
-                                onClick={PlatformUtils.openExternalLink.bind(this,"http://workswithweb.com/mqttbox.html")}
+                                onClick={PlatformUtils.openExternalLink.bind(this,"https://github.com/workswithweb/MQTTBox")}
                                 src="./images/icon-128.png" alt="workswithweb.com"/>
                         </div>
                         <div className="media-body">
@@ -74,7 +74,7 @@ export default class AboutApp extends React.Component {
                             </div>
                             <div className="col-xs-12 col-sm-4 col-md-3">
                                 <div style={{height:160}}  className="thumbnail">
-                                    <div onClick={PlatformUtils.openExternalLink.bind(this,"http://workswithweb.com/html/mqttbox/downloads.html")} style={styles.clickDiv}>
+                                    <div onClick={PlatformUtils.openExternalLink.bind(this,"https://github.com/Andy1001Yu/MQTTBox/releases")} style={styles.clickDiv}>
                                         <div className="caption">
                                             <h4>MQTTBox Download</h4>
                                             <p>Apps for Chrome, Linux, Mac, Web and Windows</p>
@@ -85,7 +85,7 @@ export default class AboutApp extends React.Component {
                             </div>
                             <div className="col-xs-12 col-sm-4 col-md-3">
                                 <div style={{minHeight:160}} className="thumbnail">
-                                    <div onClick={PlatformUtils.openExternalLink.bind(this,"http://workswithweb.com/mqttbox.html")} style={styles.clickDiv}>
+                                    <div onClick={PlatformUtils.openExternalLink.bind(this,"https://github.com/workswithweb/MQTTBox")} style={styles.clickDiv}>
                                         <div className="caption">
                                             <h4>MQTTBox Documentation</h4>
                                             <p>Learn about MQTTBox features and tutorials</p>

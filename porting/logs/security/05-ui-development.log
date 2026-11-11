@@ -1,0 +1,10 @@
+GitHub release check intercepted; its route was installed before window creation.
+Electron 45.3.0 arm64; packaged=false
+Application: <WORKSPACE>
+MQTT worker 63708: <WORKSPACE>/build/platform/PlatformMqttClientWorkerService.js
+GitHub release check intercepted; its route was installed before window creation.
+MQTT worker 63718: <WORKSPACE>/build/platform/PlatformMqttClientWorkerService.js
+GitHub release checks handled by routes installed before window creation: 2
+PASS: original UI, profile creation, QoS 2 publish/subscribe, main worker paths,
+      one-message load/data/graph, restart persistence and automatic reconnect.
+Screenshots: <WORKSPACE>/porting/screenshots/development-arm64-*.png

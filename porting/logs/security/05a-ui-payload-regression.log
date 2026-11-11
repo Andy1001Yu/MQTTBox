@@ -1,0 +1,24 @@
+Electron 45.3.0 arm64; packaged=false
+Application: <WORKSPACE>
+MQTT worker 61740: <WORKSPACE>/build/platform/PlatformMqttClientWorkerService.js
+locator.waitFor: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for getByText('one-message graph regression', { exact: true }) to be visible[22m
+
+    at verifySingleMessageGraph (<WORKSPACE>/test/electron-smoke.cjs:198:71)
+    at async main (<WORKSPACE>/test/electron-smoke.cjs:226:3)
+Broker observations: {"connections":["mqttbox_electron_smoke_61722","d483ca7c-f733-4da5-9065-9b800a1581c81794390470739"],"subscriptions":[{"clientId":"mqttbox_electron_smoke_61722","topics":[{"topic":"mqttbox/smoke/61722/qos2","qos":2}]}],"publications":[{"clientId":"mqttbox_electron_smoke_61722","topic":"mqttbox/smoke/61722/qos2","payload":"QoS 2 round trip 61722","qos":2,"retain":false},{"clientId":"d483ca7c-f733-4da5-9065-9b800a1581c81794390470739","topic":"mqttbox/smoke/61722/load","payload":"one-message graph regression","qos":2,"retain":false}],"errors":[]}
+UI at failure:  Menu
+All Instances
+Instance 1
+Time
+Message Id
+Topic
+QoS
+Instance
+Payload
+Nov-11-2026 05:47:50:747 PM
+18644
+mqttbox/smoke/61722/load
+2
+1

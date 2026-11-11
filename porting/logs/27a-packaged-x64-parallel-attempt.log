@@ -1,0 +1,195 @@
+✖ ten concurrent child load workers publish and archive 500 QoS 1 messages each (24561.583334ms)
+✖ username and password authenticate the connection worker before message delivery (6194.205125ms)
+✔ an incorrect broker password emits a connection error without authorizing a session (1413.130667ms)
+✔ MQTT 3.1 connects with MQIsdp and exchanges QoS 2 messages (3087.2235ms)
+✔ abrupt worker process termination publishes and retains its configured last will (7149.981ms)
+✔ the connection worker reconnects and restores wildcard delivery after socket loss (1486.818167ms)
+✖ stop ends a QoS 1 load while the broker withholds PUBACK (7401.874041ms)
+✖ timeout ends a QoS 1 load while the broker withholds PUBACK (10389.37325ms)
+✖ stop ends a QoS 2 load while the broker withholds PUBCOMP (7232.891542ms)
+✖ timeout ends a QoS 2 load while the broker withholds PUBCOMP (5733.073041ms)
+✖ publish load counts 32 real broker messages at numeric QoS 0 (7312.585208ms)
+✖ publish load counts 32 real broker messages at numeric QoS 1 (11913.07925ms)
+✖ publish load counts 32 real broker messages at numeric QoS 2 (5584.861083ms)
+✖ subscribe load records 32 delivered payloads at numeric QoS 0 (5437.091959ms)
+✖ subscribe load records 32 delivered payloads at numeric QoS 1 (9415.717667ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 2 (3979.747791ms)
+✔ publish load accepts the UI's string QoS '1' (2759.386625ms)
+✔ subscribe load accepts the UI's string QoS '1' (2907.850167ms)
+✔ publish load accepts the UI's string QoS '2' (2297.050708ms)
+✔ subscribe load accepts the UI's string QoS '2' (2497.969417ms)
+✔ stopping a running publish load reports partial real counts and ends once (617.047458ms)
+✔ an empty subscribe load times out with zero counts and no completion status (286.831875ms)
+✔ load worker delivers a large complete archive over child IPC before exiting (2496.412333ms)
+✖ TLS custom CA validates the local broker certificate (9659.23875ms)
+✖ TLS client-certificate mode authenticates the supplied key and certificate (8273.754541ms)
+✔ self-signed mode explicitly accepts an untrusted server certificate (5776.296666ms)
+(node:56572) [DEP0044] DeprecationWarning: The `util.isArray` API is deprecated. Please use `Array.isArray()` instead.
+(Use `MQTTBox --trace-deprecation ...` to show where the warning was created)
+✔ custom CA mode rejects a broker signed by a different authority (1627.149375ms)
+✖ WebSocket transport exchanges MQTT messages on a URL path (7230.357709ms)
+✖ secure WebSocket transport honors the configured CA (6703.208333ms)
+✖ connection worker delivers QoS 0 and completes its protocol acknowledgement (6050.023125ms)
+✖ connection worker delivers QoS 1 and completes its protocol acknowledgement (12417.70825ms)
+✔ connection worker delivers QoS 2 and completes its protocol acknowledgement (4694.199833ms)
+✔ wildcard subscriptions preserve the matching filter and unsubscribe removes delivery (6376.329125ms)
+✔ a new subscription receives retained payload and its retained flag (3701.458583ms)
+✖ connection worker exchanges messages and disconnects through real child IPC (11097.649625ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 17
+ℹ fail 17
+ℹ cancelled 1
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67811.531625
+
+✖ failing tests:
+
+test at test/mqtt-extended.test.cjs:23:1
+✖ ten concurrent child load workers publish and archive 500 QoS 1 messages each (24561.583334ms)
+  Error: Timed out waiting for child EVENT_MQTT_LOAD_TEST_ENDED:
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:259:47)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-extended.test.cjs:85:1
+✖ username and password authenticate the connection worker before message delivery (6194.205125ms)
+  Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ stop ends a QoS 1 load while the broker withholds PUBACK (7401.874041ms)
+  Error: Timed out waiting for acknowledgement-held
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ timeout ends a QoS 1 load while the broker withholds PUBACK (10389.37325ms)
+  'test timed out after 10000ms'
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ stop ends a QoS 2 load while the broker withholds PUBCOMP (7232.891542ms)
+  Error: Timed out waiting for acknowledgement-held
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ timeout ends a QoS 2 load while the broker withholds PUBCOMP (5733.073041ms)
+  Error: Timed out waiting for acknowledgement-held
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-load.test.cjs:25:3
+✖ publish load counts 32 real broker messages at numeric QoS 0 (7312.585208ms)
+  Error: Timed out waiting for EVENT_WORKER_MQTT_LOAD
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-load.test.cjs:25:3
+✖ publish load counts 32 real broker messages at numeric QoS 1 (11913.07925ms)
+  Error: Timed out waiting for publish: broker received 3/32 requested messages
+      at <WORKSPACE>/test/mqtt-load.test.cjs:31:31
+      at async Promise.all (index 1)
+      at async TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load.test.cjs:33:22)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/mqtt-load.test.cjs:25:3
+✖ publish load counts 32 real broker messages at numeric QoS 2 (5584.861083ms)
+  Error: Timed out waiting for publish: broker received 5/32 requested messages
+      at <WORKSPACE>/test/mqtt-load.test.cjs:31:31
+      at async Promise.all (index 1)
+      at async TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load.test.cjs:33:22)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at test/mqtt-load.test.cjs:52:3
+✖ subscribe load records 32 delivered payloads at numeric QoS 0 (5437.091959ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  0 !== 32
+
+      at TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load.test.cjs:66:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 32,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/mqtt-load.test.cjs:52:3
+✖ subscribe load records 32 delivered payloads at numeric QoS 1 (9415.717667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 32
+
+      at TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load.test.cjs:66:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 32,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/mqtt-tls.test.cjs:25:1
+✖ TLS custom CA validates the local broker certificate (9659.23875ms)
+  Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-tls.test.cjs:32:1
+✖ TLS client-certificate mode authenticates the supplied key and certificate (8273.754541ms)
+  Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-tls.test.cjs:64:1
+✖ WebSocket transport exchanges MQTT messages on a URL path (7230.357709ms)
+  Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-tls.test.cjs:69:1
+✖ secure WebSocket transport honors the configured CA (6703.208333ms)
+  Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-worker.test.cjs:9:3
+✖ connection worker delivers QoS 0 and completes its protocol acknowledgement (6050.023125ms)
+  Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-worker.test.cjs:9:3
+✖ connection worker delivers QoS 1 and completes its protocol acknowledgement (12417.70825ms)
+  Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:25:43)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)
+
+test at test/mqtt-worker.test.cjs:90:1
+✖ connection worker exchanges messages and disconnects through real child IPC (11097.649625ms)
+  Error: Timed out waiting for child EVENT_MQTT_CLIENT_CONN_STATE_CHANGED:
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:259:47)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)

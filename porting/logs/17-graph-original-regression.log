@@ -1,0 +1,7 @@
+Electron 45.3.0 arm64; packaged=false
+Application: <WORKSPACE>
+Error: Timed out: single-message graph must render without a zero-step infinite loop
+    at Timeout.<anonymous> (<WORKSPACE>/test/electron-fixture.cjs:16:39)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+Broker observations: {"connections":["mqttbox_electron_smoke_43803","be6e2631-07f1-40a9-bb3c-87300b11f5bf1794387908157"],"subscriptions":[{"clientId":"mqttbox_electron_smoke_43803","topics":[{"topic":"mqttbox/smoke/43803/qos2","qos":2}]}],"publications":[{"clientId":"mqttbox_electron_smoke_43803","topic":"mqttbox/smoke/43803/qos2","payload":"QoS 2 round trip 43803","qos":2,"retain":false},{"clientId":"be6e2631-07f1-40a9-bb3c-87300b11f5bf1794387908157","topic":"mqttbox/smoke/43803/load","payload":"one-message graph regression","qos":2,"retain":false}],"errors":[]}

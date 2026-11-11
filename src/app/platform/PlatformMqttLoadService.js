@@ -1,5 +1,6 @@
 const ipcMain = require('electron').ipcMain;
 var childProcess = require('child_process');
+var path = require('path');
 const {webContents,app} = require('electron');
 import _ from 'lodash';
 
@@ -39,8 +40,13 @@ class PlatformMqttLoadService {  
             process.kill(mqttLoadWorkerObj.pid, 'SIGHUP');
             delete this.mqttLoadWorkers[action.data.iId];
         }
-        mqttLoadWorkerObj = childProcess.fork(app.getAppPath()+'/platform/PlatformMqttLoadWorkerService.js');
+        mqttLoadWorkerObj = childProcess.fork(path.join(__dirname, 'PlatformMqttLoadWorkerService.js'));
         mqttLoadWorkerObj.on('message', this.processEvents.bind(this));
+        mqttLoadWorkerObj.on('exit', function() {
+            if(this.mqttLoadWorkers[action.data.iId] === mqttLoadWorkerObj) {
+                delete this.mqttLoadWorkers[action.data.iId];
+            }
+        }.bind(this));
         this.mqttLoadWorkers[action.data.iId] = mqttLoadWorkerObj;
         mqttLoadWorkerObj.send(action);
     }

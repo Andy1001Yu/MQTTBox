@@ -1,0 +1,2 @@
+4ca7c567d9f7fb943733245adeb9c8eee19e740613d4c26ae6ffaa1eb5c1c2d8  MQTTBox-0.2.2-macos.1-mac-arm64.dmg
+3dfbfdd5634f29abec4a58a52abc61ef8f07b7bf7178e8fd4daa572802de41fc  MQTTBox-0.2.2-macos.1-mac-x64.dmg

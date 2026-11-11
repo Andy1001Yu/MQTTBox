@@ -1,5 +1,6 @@
 const ipcMain = require('electron').ipcMain;
 var childProcess = require('child_process');
+var path = require('path');
 const {webContents,app} = require('electron');
 import _ from 'lodash';
 
@@ -54,8 +55,13 @@ class PlatformMqttClientService {  
         if(mqttClientConnectionWorker!=null) {
             mqttClientConnectionWorker.send(action);
         } else {
-            mqttClientConnectionWorker = childProcess.fork(app.getAppPath()+'/platform/PlatformMqttClientWorkerService.js');
+            mqttClientConnectionWorker = childProcess.fork(path.join(__dirname, 'PlatformMqttClientWorkerService.js'));
             mqttClientConnectionWorker.on('message', this.processEvents.bind(this));
+            mqttClientConnectionWorker.on('exit', function() {
+                if(this.mqttClientConnectionWorkers[action.data.mcsId] === mqttClientConnectionWorker) {
+                    delete this.mqttClientConnectionWorkers[action.data.mcsId];
+                }
+            }.bind(this));
             this.mqttClientConnectionWorkers[action.data.mcsId] = mqttClientConnectionWorker;
             mqttClientConnectionWorker.send(action);
         }

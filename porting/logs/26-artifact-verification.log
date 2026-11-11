@@ -1,0 +1,116 @@
+$ file <WORKSPACE>/dist/mac-arm64/MQTTBox.app/Contents/MacOS/MQTTBox
+<WORKSPACE>/dist/mac-arm64/MQTTBox.app/Contents/MacOS/MQTTBox: Mach-O 64-bit executable arm64
+
+$ codesign --verify --deep --strict --verbose=1 <WORKSPACE>/dist/mac-arm64/MQTTBox.app
+<WORKSPACE>/dist/mac-arm64/MQTTBox.app: valid on disk
+<WORKSPACE>/dist/mac-arm64/MQTTBox.app: satisfies its Designated Requirement
+
+$ codesign -dv <WORKSPACE>/dist/mac-arm64/MQTTBox.app
+Executable=<WORKSPACE>/dist/mac-arm64/MQTTBox.app/Contents/MacOS/MQTTBox
+Identifier=com.workswithweb.mqttbox
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20400 size=433 flags=0x2(adhoc) hashes=3+7 location=embedded
+Signature=adhoc
+Info.plist entries=32
+TeamIdentifier=not set
+Sealed Resources version=2 rules=13 files=14
+Internal requirements count=0 size=12
+
+$ hdiutil verify <WORKSPACE>/dist/MQTTBox-0.2.1-mac-arm64.dmg
+正在检查“Protective Master Boot Record（MBR：0）”的校验和…
+Protective Master Boot Record（MBR：0）：已验证CRC32 $D7EE4EFC
+正在检查“GPT Header（Primary GPT Header：1）”的校验和…
+    GPT Header（Primary GPT Header：1）：已验证CRC32 $3DD47812
+正在检查“GPT Partition Data（Primary GPT Table：2）”的校验和…
+GPT Partition Data（Primary GPT Table：已验证CRC32 $6EF7D505
+正在检查“（Apple_Free：3）”的校验和…
+                      （Apple_Free：3）：已验证CRC32 $00000000
+正在检查“disk image（Apple_HFS：4）”的校验和…
+             disk image（Apple_HFS：4）：已验证CRC32 $F653A858
+正在检查“（Apple_Free：5）”的校验和…
+                      （Apple_Free：5）：已验证CRC32 $00000000
+正在检查“GPT Partition Data（Backup GPT Table：6）”的校验和…
+GPT Partition Data（Backup GPT Table：：已验证CRC32 $6EF7D505
+正在检查“GPT Header（Backup GPT Header：7）”的校验和…
+     GPT Header（Backup GPT Header：7）：已验证CRC32 $CFA0601C
+已验证CRC32 $850BA4AD
+hdiutil: verify: checksum of "<WORKSPACE>/dist/MQTTBox-0.2.1-mac-arm64.dmg" is VALID
+
+预计CRC32 $850BA4AD
+/dev/disk4          	GUID_partition_scheme
+/dev/disk4s1        	Apple_HFS                      	<TMPDIR>/mqttbox-dmg-arm64-97r_nb7f
+hdiutil: WARNING: 'hdiutil attach -readonly -nobrowse -mountpoint ...' is deprecated. Please use 'diskutil image attach --readOnly --mountOptions nobrowse --mountPoint ...' instead.
+
+arm64: mounted DMG .app executable/ASAR exactly match tested app; Applications link present
+hdiutil: WARNING: 'hdiutil detach ...' is deprecated. Please use 'diskutil eject ...' instead.
+"disk4" ejected.
+$ file <WORKSPACE>/dist/mac/MQTTBox.app/Contents/MacOS/MQTTBox
+<WORKSPACE>/dist/mac/MQTTBox.app/Contents/MacOS/MQTTBox: Mach-O 64-bit executable x86_64
+
+$ codesign --verify --deep --strict --verbose=1 <WORKSPACE>/dist/mac/MQTTBox.app
+<WORKSPACE>/dist/mac/MQTTBox.app: valid on disk
+<WORKSPACE>/dist/mac/MQTTBox.app: satisfies its Designated Requirement
+
+$ codesign -dv <WORKSPACE>/dist/mac/MQTTBox.app
+Executable=<WORKSPACE>/dist/mac/MQTTBox.app/Contents/MacOS/MQTTBox
+Identifier=com.workswithweb.mqttbox
+Format=app bundle with Mach-O thin (x86_64)
+CodeDirectory v=20400 size=465 flags=0x2(adhoc) hashes=4+7 location=embedded
+Signature=adhoc
+Info.plist entries=32
+TeamIdentifier=not set
+Sealed Resources version=2 rules=13 files=14
+Internal requirements count=0 size=12
+
+$ hdiutil verify <WORKSPACE>/dist/MQTTBox-0.2.1-mac-x64.dmg
+正在检查“Protective Master Boot Record（MBR：0）”的校验和…
+Protective Master Boot Record（MBR：0）：已验证CRC32 $802C3F02
+正在检查“GPT Header（Primary GPT Header：1）”的校验和…
+    GPT Header（Primary GPT Header：1）：已验证CRC32 $C011C6D8
+正在检查“GPT Partition Data（Primary GPT Table：2）”的校验和…
+GPT Partition Data（Primary GPT Table：已验证CRC32 $CE69E851
+正在检查“（Apple_Free：3）”的校验和…
+                      （Apple_Free：3）：已验证CRC32 $00000000
+正在检查“disk image（Apple_HFS：4）”的校验和…
+             disk image（Apple_HFS：4）：已验证CRC32 $8A9777E9
+正在检查“（Apple_Free：5）”的校验和…
+                      （Apple_Free：5）：已验证CRC32 $00000000
+正在检查“GPT Partition Data（Backup GPT Table：6）”的校验和…
+GPT Partition Data（Backup GPT Table：：已验证CRC32 $CE69E851
+正在检查“GPT Header（Backup GPT Header：7）”的校验和…
+     GPT Header（Backup GPT Header：7）：已验证CRC32 $EA249396
+已验证CRC32 $FBD500B3
+hdiutil: verify: checksum of "<WORKSPACE>/dist/MQTTBox-0.2.1-mac-x64.dmg" is VALID
+
+预计CRC32 $FBD500B3
+/dev/disk4          	GUID_partition_scheme
+/dev/disk4s1        	Apple_HFS                      	<TMPDIR>/mqttbox-dmg-x64-yb186qdx
+hdiutil: WARNING: 'hdiutil attach -readonly -nobrowse -mountpoint ...' is deprecated. Please use 'diskutil image attach --readOnly --mountOptions nobrowse --mountPoint ...' instead.
+
+x64: mounted DMG .app executable/ASAR exactly match tested app; Applications link present
+hdiutil: WARNING: 'hdiutil detach ...' is deprecated. Please use 'diskutil eject ...' instead.
+"disk4" ejected.
+[
+  {
+    "arch": "arm64",
+    "dmg": "MQTTBox-0.2.1-mac-arm64.dmg",
+    "bytes": 127193864,
+    "sha256": "b6a1b1b7efa0faed885e5f08c737296d749b0b10e6cde57ad0632f0d6ad66df4",
+    "app": "dist/mac-arm64/MQTTBox.app",
+    "appAsarSha256": "6719b3ccba4c703992113d4ce87604d08bab9f19148f8da796c236607e28adcd",
+    "minimumMacOS": "13.0",
+    "signature": "ad-hoc",
+    "notarized": false
+  },
+  {
+    "arch": "x64",
+    "dmg": "MQTTBox-0.2.1-mac-x64.dmg",
+    "bytes": 134167615,
+    "sha256": "f37d1331cb273a3eb7734e095a33a103846f56aac9f01888248108aaa9a628e0",
+    "app": "dist/mac/MQTTBox.app",
+    "appAsarSha256": "6719b3ccba4c703992113d4ce87604d08bab9f19148f8da796c236607e28adcd",
+    "minimumMacOS": "13.0",
+    "signature": "ad-hoc",
+    "notarized": false
+  }
+]

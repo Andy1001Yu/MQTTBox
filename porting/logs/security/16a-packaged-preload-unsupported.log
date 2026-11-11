@@ -1,0 +1,7 @@
+AssertionError [ERR_ASSERTION]: network interception must be installed before any app window is created
+
+1 !== 0
+
+    at launch (<WORKSPACE>/test/electron-smoke.cjs:46:10)
+    at async main (<WORKSPACE>/test/electron-smoke.cjs:286:16)
+Broker observations: {"connections":[],"subscriptions":[],"publications":[],"errors":[],"apiRequests":[],"blockedRequests":[]}

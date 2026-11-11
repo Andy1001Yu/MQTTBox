@@ -1,0 +1,42 @@
+✖ stop ends a QoS 1 load while the broker withholds PUBACK (1290.048209ms)
+✖ timeout ends a QoS 1 load while the broker withholds PUBACK (1304.766666ms)
+✖ stop ends a QoS 2 load while the broker withholds PUBCOMP (1313.016833ms)
+✖ timeout ends a QoS 2 load while the broker withholds PUBCOMP (1306.067958ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 0
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5352.696125
+
+✖ failing tests:
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ stop ends a QoS 1 load while the broker withholds PUBACK (1290.048209ms)
+  Error: Timed out waiting for child EVENT_MQTT_LOAD_TEST_ENDED:
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:258:47)
+      at listOnTimeout (node:internal/timers:605:17)
+      at process.processTimers (node:internal/timers:541:7)
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ timeout ends a QoS 1 load while the broker withholds PUBACK (1304.766666ms)
+  Error: Timed out waiting for child EVENT_MQTT_LOAD_TEST_ENDED:
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:258:47)
+      at listOnTimeout (node:internal/timers:605:17)
+      at process.processTimers (node:internal/timers:541:7)
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ stop ends a QoS 2 load while the broker withholds PUBCOMP (1313.016833ms)
+  Error: Timed out waiting for child EVENT_MQTT_LOAD_TEST_ENDED:
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:258:47)
+      at listOnTimeout (node:internal/timers:605:17)
+      at process.processTimers (node:internal/timers:541:7)
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ timeout ends a QoS 2 load while the broker withholds PUBCOMP (1306.067958ms)
+  Error: Timed out waiting for child EVENT_MQTT_LOAD_TEST_ENDED:
+      at Timeout.<anonymous> (<WORKSPACE>/test/helpers/mqtt-harness.cjs:258:47)
+      at listOnTimeout (node:internal/timers:605:17)
+      at process.processTimers (node:internal/timers:541:7)

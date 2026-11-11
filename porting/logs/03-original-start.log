@@ -1,0 +1,21 @@
+
+> MQTTBox@0.2.1 start
+> gulp
+
+<WORKSPACE>/node_modules/require-dir/index.js:97
+            if (!require.extensions.hasOwnProperty(ext)) {
+                                    ^
+
+TypeError: require.extensions.hasOwnProperty is not a function
+    at requireDir (<WORKSPACE>/node_modules/require-dir/index.js:97:37)
+    at Object.<anonymous> (<WORKSPACE>/gulpfile.js:16:1)
+    at Module._compile (node:internal/modules/cjs/loader:1829:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1969:10)
+    at Module.load (node:internal/modules/cjs/loader:1552:32)
+    at Module._load (node:internal/modules/cjs/loader:1354:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at require (node:internal/modules/helpers:191:16)
+    at Liftoff.handleArguments (<WORKSPACE>/node_modules/gulp/bin/gulp.js:116:3)
+
+Node.js v26.0.0

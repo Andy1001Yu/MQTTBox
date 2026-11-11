@@ -3,3 +3,11 @@ build
 .idea
 .DS_Store
 *.iml
+dist/
+
+porting/build-resources/*.iconset/
+
+.local-only/
+
+__pycache__/
+*.pyc

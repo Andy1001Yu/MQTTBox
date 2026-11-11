@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "collected_date": "2026-11-11",
+  "scope": "Current vendored browser assets after the MQTTBox macOS security update. These files are outside npm audit coverage. This inventory supplements, and does not rewrite, historical SOURCES.json.",
+  "assets": [
+    {
+      "file": "src/www/lib/jquery.min.js",
+      "bytes": 87533,
+      "sha256": "fc9a93dd241f6b045cbff0481cf4e1901becd0e12fb45166a8f17f95823f0b1a",
+      "component": "jQuery",
+      "version": "3.7.1",
+      "kind": "versioned-upstream-file-verbatim",
+      "source_urls": [
+        "https://code.jquery.com/jquery-3.7.1.min.js"
+      ]
+    },
+    {
+      "file": "src/www/lib/bootstrap/css/bootstrap.min.css",
+      "bytes": 121457,
+      "sha256": "6d92dfc1700fd38cd130ad818e23bc8aef697f815b2ea5face2b5dfad22f2e11",
+      "component": "Bootstrap CSS",
+      "version": "3.4.1",
+      "kind": "versioned-upstream-file-verbatim",
+      "source_urls": [
+        "https://raw.githubusercontent.com/twbs/bootstrap/v3.4.1/dist/css/bootstrap.min.css"
+      ]
+    },
+    {
+      "file": "src/www/lib/bootstrap/js/bootstrap.min.js",
+      "bytes": 13061,
+      "sha256": "949f7996d9e1b4bddd5360d6d1b03c47ad7a6ab7ab6802aff6f0abb94b85d646",
+      "component": "Bootstrap JavaScript",
+      "version": "3.4.1",
+      "kind": "custom-concatenation-of-unmodified-versioned-upstream-modules",
+      "included_plugins": [
+        "transition",
+        "collapse",
+        "dropdown"
+      ],
+      "assembly": {
+        "header_utf8": "/*!\n * Bootstrap v3.4.1 - MQTTBox custom bundle\n * Included official modules, in order: transition, collapse, dropdown.\n * Source modules are unmodified; see porting/licenses/SECURITY-VENDOR-SOURCES.json.\n * Copyright 2011-2019 Twitter, Inc.\n * Licensed under MIT (https://github.com/twbs/bootstrap/blob/v3.4.1/LICENSE).\n * The historical bootstrap.min.js filename is retained; this bundle is readable.\n */\n",
+        "between_modules_utf8": "\n",
+        "modules": [
+          {
+            "name": "transition.js",
+            "url": "https://raw.githubusercontent.com/twbs/bootstrap/v3.4.1/js/transition.js",
+            "bytes": 1839,
+            "sha256": "dfd38a036a1ed2f6362413696c71555c108aa06b2ffef68577705df1b1983bc2",
+            "offset_bytes": 407
+          },
+          {
+            "name": "collapse.js",
+            "url": "https://raw.githubusercontent.com/twbs/bootstrap/v3.4.1/js/collapse.js",
+            "bytes": 6031,
+            "sha256": "407419f6c4ea29e13ada7134380a0fcb10d38e9e8611db54f60cb6278a424a70",
+            "offset_bytes": 2247
+          },
+          {
+            "name": "dropdown.js",
+            "url": "https://raw.githubusercontent.com/twbs/bootstrap/v3.4.1/js/dropdown.js",
+            "bytes": 4782,
+            "sha256": "0261c06fcfe41df6cca79148c3b4f2cd7e6966ce61c93ea325b6c8f2295e8904",
+            "offset_bytes": 8279
+          }
+        ]
+      }
+    }
+  ],
+  "licenses": [
+    {
+      "file": "porting/licenses/jquery-3.7.1-LICENSE.txt",
+      "bytes": 1097,
+      "sha256": "d4db9ebe6f29f5168eac45ad713f055623ac5d0dcd5ba92da23d650ae012020d",
+      "kind": "versioned-upstream-license-verbatim",
+      "source_urls": [
+        "https://raw.githubusercontent.com/jquery/jquery/3.7.1/LICENSE.txt"
+      ]
+    },
+    {
+      "file": "porting/licenses/bootstrap-3.4.1-LICENSE.txt",
+      "bytes": 1085,
+      "sha256": "f2bc4d83a3c6e3733a229ff8039eba3ef481ea097323c5d0642107df857db4dc",
+      "kind": "versioned-upstream-license-verbatim",
+      "source_urls": [
+        "https://raw.githubusercontent.com/twbs/bootstrap/v3.4.1/LICENSE"
+      ]
+    }
+  ],
+  "related_notices": [
+    {
+      "file": "porting/licenses/normalize-3.0.3-LICENSE.txt",
+      "scope": "Bootstrap 3.4.1 CSS embeds normalize.css 3.0.3; the existing versioned notice remains applicable."
+    },
+    {
+      "file": "porting/licenses/bootstrap-3.3.7-GLYPHICONS-NOTICE.txt",
+      "scope": "Existing Glyphicons files and their metadata are unchanged; the notice identifies the version originally audited."
+    }
+  ],
+  "documentation": "porting/licenses/SECURITY-VENDOR-NOTICE.md"
+}

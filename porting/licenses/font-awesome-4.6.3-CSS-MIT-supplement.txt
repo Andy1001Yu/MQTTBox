@@ -1,0 +1,36 @@
+Font Awesome 4.6.3 CSS — supplemental license record
+
+This file was added during porting. The versioned upstream README and the CSS
+header declare the CSS under the MIT License but do not supply a full license
+text in this checkout. The original CSS attribution is preserved below; the MIT
+permission and disclaimer are reproduced from the standard SPDX MIT reference.
+This supplement is not presented as an original Font Awesome LICENSE file.
+
+Upstream declaration:
+https://github.com/FortAwesome/Font-Awesome/blob/v4.6.3/README.md#license
+Local CSS: src/www/lib/fontawesome/css/font-awesome.min.css
+Original CSS header (verbatim):
+/*!
+ *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
+This MIT record applies to the CSS code. The font files use SIL OFL 1.1 and have
+a separate notice in font-awesome-4.6.3-font-OFL-supplement.txt.
+
+MIT License — standard permission and disclaimer
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+associated documentation files (the "Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
+following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial
+portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE.

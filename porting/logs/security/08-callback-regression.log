@@ -1,0 +1,25 @@
+✔ stop ends a QoS 1 load while the broker withholds PUBACK (142.917458ms)
+✔ timeout ends a QoS 1 load while the broker withholds PUBACK (367.90025ms)
+✔ stop ends a QoS 2 load while the broker withholds PUBCOMP (123.688709ms)
+✔ timeout ends a QoS 2 load while the broker withholds PUBCOMP (368.194917ms)
+✔ publish load counts 32 real broker messages at numeric QoS 0 (242.2375ms)
+✔ publish load counts 32 real broker messages at numeric QoS 1 (217.908083ms)
+✔ publish load counts 32 real broker messages at numeric QoS 2 (218.077375ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 0 (4.65875ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 1 (6.09475ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 2 (10.8065ms)
+✔ publish load accepts the UI's string QoS '1' (149.488375ms)
+✔ subscribe load accepts the UI's string QoS '1' (88.721875ms)
+✔ publish load accepts the UI's string QoS '2' (152.861ms)
+✔ subscribe load accepts the UI's string QoS '2' (85.611709ms)
+✔ stopping a running publish load reports partial real counts and ends once (155.143625ms)
+✔ an empty subscribe load times out with zero counts and no completion status (193.105583ms)
+✔ load worker delivers a large complete archive over child IPC before exiting (103.007833ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1759.168291

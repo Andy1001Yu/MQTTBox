@@ -1,0 +1,15 @@
+GitHub release check intercepted; its route was installed before window creation.
+Electron 45.3.0 arm64; packaged=false
+MQTTBox release: 0.2.2-macos.1
+Application: <WORKSPACE>
+PASS: the real page CSP blocks dynamically injected inline JavaScript.
+PASS: current jQuery and the three required Bootstrap modules loaded; unused plugins are absent.
+PASS: original menu dropdown opens and closes with real clicks.
+MQTT worker 77674: <WORKSPACE>/build/platform/PlatformMqttClientWorkerService.js
+PASS: received QoS 2 message details collapse and expand after animation.
+GitHub release check intercepted; its route was installed before window creation.
+MQTT worker 77692: <WORKSPACE>/build/platform/PlatformMqttClientWorkerService.js
+GitHub release checks handled by local routes: 2; packaged startup CONNECTs blocked locally: 0
+PASS: original UI, profile creation, QoS 2 publish/subscribe, main worker paths,
+      one-message load/data/graph, restart persistence and automatic reconnect.
+Screenshots: <WORKSPACE>/porting/screenshots/development-arm64-*.png

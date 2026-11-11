@@ -1,0 +1,286 @@
+
+> MQTTBox@0.2.2-macos.1 test
+> npm run build && node --test test/*.test.cjs
+
+
+> MQTTBox@0.2.2-macos.1 build
+> node scripts/build.cjs
+
+Successfully compiled 52 files with Babel (297ms).
+✔ ten concurrent child load workers publish and archive 500 QoS 1 messages each (1864.908208ms)
+✔ username and password authenticate the connection worker before message delivery (10.248ms)
+✔ an incorrect broker password emits a connection error without authorizing a session (2.394209ms)
+✔ MQTT 3.1 connects with MQIsdp and exchanges QoS 2 messages (1.841083ms)
+✔ abrupt worker process termination publishes and retains its configured last will (81.878167ms)
+✔ the connection worker reconnects and restores wildcard delivery after socket loss (53.290041ms)
+✖ stop ends a QoS 1 load while the broker withholds PUBACK (206.565208ms)
+✖ timeout ends a QoS 1 load while the broker withholds PUBACK (334.904292ms)
+✖ stop ends a QoS 2 load while the broker withholds PUBCOMP (87.852792ms)
+✖ timeout ends a QoS 2 load while the broker withholds PUBCOMP (323.489375ms)
+✔ publish load counts 32 real broker messages at numeric QoS 0 (286.116958ms)
+✔ publish load counts 32 real broker messages at numeric QoS 1 (222.257459ms)
+✖ publish load counts 32 real broker messages at numeric QoS 2 (179.326125ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 0 (4.930625ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 1 (5.736708ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 2 (11.889083ms)
+✔ publish load accepts the UI's string QoS '1' (147.210875ms)
+✔ subscribe load accepts the UI's string QoS '1' (84.216458ms)
+✔ publish load accepts the UI's string QoS '2' (148.022375ms)
+✔ subscribe load accepts the UI's string QoS '2' (86.284167ms)
+✔ stopping a running publish load reports partial real counts and ends once (153.035916ms)
+✔ an empty subscribe load times out with zero counts and no completion status (193.146917ms)
+✔ load worker delivers a large complete archive over child IPC before exiting (114.083417ms)
+✔ TLS custom CA validates the local broker certificate (32.542458ms)
+✔ TLS client-certificate mode authenticates the supplied key and certificate (4.612583ms)
+✔ CA-signed mode rejects an untrusted server certificate over mqtts (2.692833ms)
+✖ CA-signed mode rejects an untrusted server certificate over wss (19.29575ms)
+✔ custom CA mode rejects a broker signed by a different authority (2.874708ms)
+✔ WebSocket transport exchanges MQTT messages on a URL path (4.500917ms)
+✔ secure WebSocket transport honors the configured CA (6.5705ms)
+✔ connection worker delivers QoS 0 and completes its protocol acknowledgement (64.601625ms)
+✔ connection worker delivers QoS 1 and completes its protocol acknowledgement (8.719333ms)
+✔ connection worker delivers QoS 2 and completes its protocol acknowledgement (18.311125ms)
+✔ wildcard subscriptions preserve the matching filter and unsubscribe removes delivery (101.847167ms)
+✔ a new subscription receives retained payload and its retained flag (5.074625ms)
+✔ connection worker exchanges messages and disconnects through real child IPC (108.697542ms)
+✔ release check sends an anonymous, bounded HTTPS GET with redirects and credentials disabled (33.772083ms)
+▶ release notifications follow semantic version and prerelease precedence
+  ✔ v0.2.2-macos.2 compared with 0.2.2-macos.1 (0.682292ms)
+  ✔ v0.2.2-macos.10 compared with 0.2.2-macos.2 (0.813458ms)
+  ✔ v0.2.2 compared with 0.2.2-macos.1 (0.540875ms)
+  ✔ v0.2.2+build-1 compared with 0.2.2-macos.1 (0.3995ms)
+  ✔ v0.2.2-macos.1+different-build compared with 0.2.2-macos.1 (0.309333ms)
+  ✔ v0.2.2-macos.1 compared with 0.2.2-macos.1 (0.311875ms)
+  ✔ v0.2.2-macos.0 compared with 0.2.2-macos.1 (0.539292ms)
+  ✔ v0.2.1 compared with 0.2.2-macos.1 (0.638209ms)
+  ✔ v1.0.0 compared with 2.0.0 (0.410458ms)
+  ✔ v2.0.0 compared with 1.0.0 (0.550208ms)
+✔ release notifications follow semantic version and prerelease precedence (6.157958ms)
+▶ unavailable, redirected, or malformed release responses never notify or escape init
+  ✔ network failure (0.648666ms)
+  ✔ timeout (0.566125ms)
+  ✔ missing release (0.415417ms)
+  ✔ rate limit (0.277417ms)
+  ✔ unexpected status (0.322708ms)
+  ✔ unexpected response URL (0.271083ms)
+  ✔ HTML response (0.268ms)
+  ✔ invalid JSON (0.713083ms)
+  ✔ null JSON (0.555875ms)
+  ✔ array JSON (0.675375ms)
+  ✔ missing tag (0.806708ms)
+  ✔ object tag (0.466ms)
+  ✔ script tag (0.528834ms)
+  ✔ newline in tag (0.582ms)
+  ✔ partial version (0.299583ms)
+  ✔ wildcard version (0.283666ms)
+  ✔ leading zero (0.236292ms)
+  ✔ leading prerelease zero (0.400667ms)
+  ✔ huge tag (0.44775ms)
+  ✔ draft release (0.371125ms)
+✔ unavailable, redirected, or malformed release responses never notify or escape init (10.190416ms)
+✔ external links open only HTTP and HTTPS URLs (1.01475ms)
+✔ displayed version follows the application manifest (0.682666ms)
+ℹ tests 71
+ℹ suites 0
+ℹ pass 65
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2157.443
+
+✖ failing tests:
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ stop ends a QoS 1 load while the broker withholds PUBACK (206.565208ms)
+  AssertionError [ERR_ASSERTION]: an unreceived acknowledgement must not be counted
+
+  1 !== 0
+
+      at TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load-cancel.test.cjs:67:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ timeout ends a QoS 1 load while the broker withholds PUBACK (334.904292ms)
+  AssertionError [ERR_ASSERTION]: an unreceived acknowledgement must not be counted
+
+  1 !== 0
+
+      at TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load-cancel.test.cjs:67:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ stop ends a QoS 2 load while the broker withholds PUBCOMP (87.852792ms)
+  AssertionError [ERR_ASSERTION]: an unreceived acknowledgement must not be counted
+
+  1 !== 0
+
+      at TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load-cancel.test.cjs:67:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/mqtt-load-cancel.test.cjs:40:5
+✖ timeout ends a QoS 2 load while the broker withholds PUBCOMP (323.489375ms)
+  AssertionError [ERR_ASSERTION]: an unreceived acknowledgement must not be counted
+
+  1 !== 0
+
+      at TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load-cancel.test.cjs:67:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/mqtt-load.test.cjs:25:3
+✖ publish load counts 32 real broker messages at numeric QoS 2 (179.326125ms)
+  AssertionError [ERR_ASSERTION]: the archive must retain each original payload after its QoS acknowledgement
+  + actual - expected
+
+    [
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined
+  -   'alpha',
+  -   '中文-beta',
+  -   'gamma',
+  -   'alpha',
+  -   '中文-beta',
+  -   'gamma',
+  -   'alpha',
+  -   '中文-beta',
+  -   'gamma',
+  -   'alpha',
+  -   '中文-beta',
+  -   'gamma',
+  -   'alpha',
+  -   '中文-beta',
+  -   'gamma',
+  -   'alpha',
+  -   '中文-beta',
+  -   'gamma',
+  -   'alpha',
+  -   '中文-beta',
+  -   'gamma',
+  -   'alpha',
+  -   '中文-beta',
+  -   'gamma',
+  -   'alpha',
+  -   '中文-beta',
+  -   'gamma',
+  -   'alpha',
+  -   '中文-beta',
+  -   'gamma',
+  -   'alpha',
+  -   '中文-beta'
+    ]
+
+      at TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load.test.cjs:42:12)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [
+      undefined, undefined, undefined,
+      undefined, undefined, undefined,
+      undefined, undefined, undefined,
+      undefined, undefined, undefined,
+      undefined, undefined, undefined,
+      undefined, undefined, undefined,
+      undefined, undefined, undefined,
+      undefined, undefined, undefined,
+      undefined, undefined, undefined,
+      undefined, undefined, undefined,
+      undefined, undefined
+    ],
+    expected: [
+      'alpha', '中文-beta', 'gamma',
+      'alpha', '中文-beta', 'gamma',
+      'alpha', '中文-beta', 'gamma',
+      'alpha', '中文-beta', 'gamma',
+      'alpha', '中文-beta', 'gamma',
+      'alpha', '中文-beta', 'gamma',
+      'alpha', '中文-beta', 'gamma',
+      'alpha', '中文-beta', 'gamma',
+      'alpha', '中文-beta', 'gamma',
+      'alpha', '中文-beta', 'gamma',
+      'alpha', '中文-beta'
+    ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at test/mqtt-tls.test.cjs:45:3
+✖ CA-signed mode rejects an untrusted server certificate over wss (19.29575ms)
+  AssertionError [ERR_ASSERTION]
+      at TestContext.<anonymous> (<WORKSPACE>/test/mqtt-tls.test.cjs:55:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

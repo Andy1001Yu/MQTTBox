@@ -1,0 +1,233 @@
+TAP version 13
+# Subtest: publish load counts 32 real broker messages at numeric QoS 0
+not ok 1 - publish load counts 32 real broker messages at numeric QoS 0
+  ---
+  duration_ms: 5009.885416
+  type: 'test'
+  location: '<WORKSPACE>/test/mqtt-load.test.cjs:25:3'
+  failureType: 'testCodeFailure'
+  error: 'Timed out waiting for publish: broker received 31/32 requested messages'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    <WORKSPACE>/test/mqtt-load.test.cjs:31:31
+    async Promise.all (index 1)
+    async TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load.test.cjs:33:22)
+    async Test.run (node:internal/test_runner/test:1208:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+  ...
+# Subtest: publish load counts 32 real broker messages at numeric QoS 1
+ok 2 - publish load counts 32 real broker messages at numeric QoS 1
+  ---
+  duration_ms: 220.305166
+  type: 'test'
+  ...
+# Subtest: publish load counts 32 real broker messages at numeric QoS 2
+ok 3 - publish load counts 32 real broker messages at numeric QoS 2
+  ---
+  duration_ms: 215.63075
+  type: 'test'
+  ...
+# Subtest: subscribe load records 32 delivered payloads at numeric QoS 0
+ok 4 - subscribe load records 32 delivered payloads at numeric QoS 0
+  ---
+  duration_ms: 11.96125
+  type: 'test'
+  ...
+# Subtest: subscribe load records 32 delivered payloads at numeric QoS 1
+ok 5 - subscribe load records 32 delivered payloads at numeric QoS 1
+  ---
+  duration_ms: 12.551875
+  type: 'test'
+  ...
+# Subtest: subscribe load records 32 delivered payloads at numeric QoS 2
+ok 6 - subscribe load records 32 delivered payloads at numeric QoS 2
+  ---
+  duration_ms: 16.258666
+  type: 'test'
+  ...
+# Subtest: publish load accepts the UI's string QoS '1'
+not ok 7 - publish load accepts the UI's string QoS '1'
+  ---
+  duration_ms: 157.817625
+  type: 'test'
+  location: '<WORKSPACE>/test/mqtt-load.test.cjs:79:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    11 !== 12
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 12
+  actual: 11
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load.test.cjs:89:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1208:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: subscribe load accepts the UI's string QoS '1'
+not ok 8 - subscribe load accepts the UI's string QoS '1'
+  ---
+  duration_ms: 3090.3205
+  type: 'test'
+  location: '<WORKSPACE>/test/mqtt-load.test.cjs:96:3'
+  failureType: 'testCodeFailure'
+  error: 'Worker exited before EVENT_MQTT_LOAD_STATUS_MESSAGE (code=0, signal=null); statuses=["Connecting to Broker...","Connected to broker","Subscribing to topic...","Connection to broker closed","Load test timed out."]: '
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    ChildProcess.onExit (<WORKSPACE>/test/helpers/mqtt-harness.cjs:266:20)
+    Object.onceWrapper (node:events:631:12)
+    ChildProcess.emit (node:events:521:24)
+    ChildProcess._handle.onexit (node:internal/child_process:294:12)
+  ...
+# Subtest: publish load accepts the UI's string QoS '2'
+not ok 9 - publish load accepts the UI's string QoS '2'
+  ---
+  duration_ms: 164.366125
+  type: 'test'
+  location: '<WORKSPACE>/test/mqtt-load.test.cjs:79:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    11 !== 12
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 12
+  actual: 11
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (<WORKSPACE>/test/mqtt-load.test.cjs:89:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1208:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:831:7)
+  ...
+# Subtest: subscribe load accepts the UI's string QoS '2'
+not ok 10 - subscribe load accepts the UI's string QoS '2'
+  ---
+  duration_ms: 3090.580625
+  type: 'test'
+  location: '<WORKSPACE>/test/mqtt-load.test.cjs:96:3'
+  failureType: 'testCodeFailure'
+  error: 'Worker exited before EVENT_MQTT_LOAD_STATUS_MESSAGE (code=0, signal=null); statuses=["Connecting to Broker...","Connected to broker","Subscribing to topic...","Connection to broker closed","Load test timed out."]: '
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    ChildProcess.onExit (<WORKSPACE>/test/helpers/mqtt-harness.cjs:266:20)
+    Object.onceWrapper (node:events:631:12)
+    ChildProcess.emit (node:events:521:24)
+    ChildProcess._handle.onexit (node:internal/child_process:294:12)
+  ...
+# Subtest: stopping a running publish load reports partial real counts and ends once
+ok 11 - stopping a running publish load reports partial real counts and ends once
+  ---
+  duration_ms: 160.315167
+  type: 'test'
+  ...
+# Subtest: an empty subscribe load times out with zero counts and no completion status
+ok 12 - an empty subscribe load times out with zero counts and no completion status
+  ---
+  duration_ms: 191.384542
+  type: 'test'
+  ...
+# Subtest: load worker delivers a large complete archive over child IPC before exiting
+not ok 13 - load worker delivers a large complete archive over child IPC before exiting
+  ---
+  duration_ms: 172.465
+  type: 'test'
+  location: '<WORKSPACE>/test/mqtt-load.test.cjs:158:1'
+  failureType: 'testCodeFailure'
+  error: 'Worker exited before EVENT_MQTT_LOAD_TEST_ENDED (code=0, signal=null); statuses=["Connecting to Broker...","Connected to broker","Subscribing to topic...","Subscribed. Waiting for messages...","Load test completed successfully"]: '
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    ChildProcess.onExit (<WORKSPACE>/test/helpers/mqtt-harness.cjs:266:20)
+    Object.onceWrapper (node:events:631:12)
+    ChildProcess.emit (node:events:521:24)
+    ChildProcess._handle.onexit (node:internal/child_process:294:12)
+  ...
+# Subtest: TLS custom CA validates the local broker certificate
+ok 14 - TLS custom CA validates the local broker certificate
+  ---
+  duration_ms: 29.581375
+  type: 'test'
+  ...
+# Subtest: TLS client-certificate mode authenticates the supplied key and certificate
+ok 15 - TLS client-certificate mode authenticates the supplied key and certificate
+  ---
+  duration_ms: 4.39
+  type: 'test'
+  ...
+# Subtest: self-signed mode explicitly accepts an untrusted server certificate
+ok 16 - self-signed mode explicitly accepts an untrusted server certificate
+  ---
+  duration_ms: 3.111084
+  type: 'test'
+  ...
+# (node:36740) [DEP0044] DeprecationWarning: The `util.isArray` API is deprecated. Please use `Array.isArray()` instead.
+# (Use `node --trace-deprecation ...` to show where the warning was created)
+# Subtest: custom CA mode rejects a broker signed by a different authority
+ok 17 - custom CA mode rejects a broker signed by a different authority
+  ---
+  duration_ms: 2.554083
+  type: 'test'
+  ...
+# Subtest: WebSocket transport exchanges MQTT messages on a URL path
+ok 18 - WebSocket transport exchanges MQTT messages on a URL path
+  ---
+  duration_ms: 27.546917
+  type: 'test'
+  ...
+# Subtest: secure WebSocket transport honors the configured CA
+ok 19 - secure WebSocket transport honors the configured CA
+  ---
+  duration_ms: 4.938583
+  type: 'test'
+  ...
+# Subtest: connection worker delivers QoS 0 and completes its protocol acknowledgement
+ok 20 - connection worker delivers QoS 0 and completes its protocol acknowledgement
+  ---
+  duration_ms: 26.187625
+  type: 'test'
+  ...
+# Subtest: connection worker delivers QoS 1 and completes its protocol acknowledgement
+ok 21 - connection worker delivers QoS 1 and completes its protocol acknowledgement
+  ---
+  duration_ms: 3.412667
+  type: 'test'
+  ...
+# Subtest: connection worker delivers QoS 2 and completes its protocol acknowledgement
+ok 22 - connection worker delivers QoS 2 and completes its protocol acknowledgement
+  ---
+  duration_ms: 1.748208
+  type: 'test'
+  ...
+# Subtest: wildcard subscriptions preserve the matching filter and unsubscribe removes delivery
+ok 23 - wildcard subscriptions preserve the matching filter and unsubscribe removes delivery
+  ---
+  duration_ms: 84.5565
+  type: 'test'
+  ...
+# Subtest: a new subscription receives retained payload and its retained flag
+ok 24 - a new subscription receives retained payload and its retained flag
+  ---
+  duration_ms: 2.264625
+  type: 'test'
+  ...
+# Subtest: connection worker exchanges messages and disconnects through real child IPC
+ok 25 - connection worker exchanges messages and disconnects through real child IPC
+  ---
+  duration_ms: 79.6945
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 19
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 12645.733917

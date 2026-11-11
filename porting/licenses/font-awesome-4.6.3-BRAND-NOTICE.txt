@@ -1,0 +1,9 @@
+Font Awesome 4.6.3 brand icon notice
+
+The following notice is reproduced from the official v4.6.3 documentation source:
+https://github.com/FortAwesome/Font-Awesome/blob/v4.6.3/src/_includes/brand-license.html
+Only HTML list markup has been removed; the notice text is unchanged.
+
+All brand icons are trademarks of their respective owners.
+The use of these trademarks does not indicate endorsement of the trademark holder by Font Awesome, nor vice versa.
+Brand icons should only be used to represent the company or product to which they refer.

@@ -12,9 +12,10 @@ class PlatformMqttLoadWorkerService {  
     }
 
     processEvents(eventObj) {
-        process.send(eventObj);
         if(eventObj.event == MqttLoadConstants.EVENT_MQTT_LOAD_TEST_ENDED) {
-            process.exit();
+            process.send(eventObj, function() { process.exit(); });
+        } else {
+            process.send(eventObj);
         }
     }
 }

@@ -1,0 +1,13 @@
+  • electron-builder  version=26.18.0 os=27.2.0
+  • loaded configuration  file=package.json ("build" field)
+  • Specified application directory equals to project dir — superfluous or wrong configuration  appDirectory=.
+  • executing @electron/rebuild  electronVersion=45.3.0 arch=arm64 buildFromSource=false workspaceRoot=<WORKSPACE> projectDir=./ appDir=./
+  • installing native dependencies  arch=arm64
+  • completed installing native dependencies
+  • packaging       platform=darwin arch=arm64 electron=45.3.0 appOutDir=dist/mac-arm64
+  • using custom unpacked Electron distribution  electronDist=node_modules/electron/dist
+  • copying unpacked Electron  source=<WORKSPACE>/node_modules/electron/dist/Electron.app destination=<WORKSPACE>/dist/mac-arm64/Electron.app
+  • searching for node modules  pm=npm searchDir=<WORKSPACE>
+  • duplicate dependency references  dependencies=["react@15.3.2","fbjs@0.8.18","loose-envify@1.4.0","react@15.3.2","editions@2.3.1","typechecker@4.11.0","editions@2.3.1","readable-stream@2.3.8","once@1.4.0","once@1.4.0","readable-stream@2.3.8","duplexify@3.7.1","end-of-stream@1.4.5","once@1.4.0","readable-stream@2.3.8","through2@2.0.5","readable-stream@2.3.8","readable-stream@2.3.8","end-of-stream@1.4.5","once@1.4.0","through2@2.0.5","end-of-stream@1.4.5","readable-stream@2.3.8","through2@2.0.5","react@15.3.2","react@15.3.2","invariant@2.2.4","loose-envify@1.4.0","warning@3.0.0","loose-envify@1.4.0","react@15.3.2","loose-envify@1.4.0","fbjs@0.8.18","loose-envify@1.4.0","loose-envify@1.4.0","loose-envify@1.4.0","react@15.3.2","warning@3.0.0","react@15.3.2","react@15.3.2","react-addons-transition-group@15.6.2","react@15.3.2","react@15.3.2","combined-stream@1.0.8","mime-types@2.1.35","boom@2.10.1"]
+  • signing         file=dist/mac-arm64/MQTTBox.app platform=darwin type=distribution identityName=- identityHash=none provisioningProfile=none
+  • skipped macOS notarization  reason=`notarize` options were set explicitly `false`

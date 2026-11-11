@@ -148,7 +148,7 @@ class MqttClientConnectionWorker extends Events.EventEmitter {  
                 options['ca']= this.mqttClientObj.caFile;
                 options['rejectUnauthorized'] = true;
             } else if(this.mqttClientObj.certificateType == 'cssc') {
-                options['rejectUnauthorized'] = false;
+                options['rejectUnauthorized'] = true;
             }
 
             if(this.mqttClientObj.sslTlsVersion!=null && this.mqttClientObj.sslTlsVersion != 'auto') {

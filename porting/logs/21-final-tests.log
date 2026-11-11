@@ -1,0 +1,105 @@
+
+> MQTTBox@0.2.1 test
+> npm run build && node --test test/*.test.cjs
+
+
+> MQTTBox@0.2.1 build
+> node scripts/build.cjs
+
+src/app/actions/CommonActions.js -> build/actions/CommonActions.js
+src/app/actions/MqttClientActions.js -> build/actions/MqttClientActions.js
+src/app/actions/MqttLoadActions.js -> build/actions/MqttLoadActions.js
+src/app/app.js -> build/app.js
+src/app/components/Main.js -> build/components/Main.js
+src/app/components/common/AboutApp.js -> build/components/common/AboutApp.js
+src/app/components/common/ExternalLink.js -> build/components/common/ExternalLink.js
+src/app/components/common/LeftMenuButton.js -> build/components/common/LeftMenuButton.js
+src/app/components/common/NavLink.js -> build/components/common/NavLink.js
+src/app/components/common/UserMessageSnackbar.js -> build/components/common/UserMessageSnackbar.js
+src/app/components/mqttClient/AddEditMqttClient.js -> build/components/mqttClient/AddEditMqttClient.js
+src/app/components/mqttClient/MqttClientDashboard.js -> build/components/mqttClient/MqttClientDashboard.js
+src/app/components/mqttClient/MqttClientList.js -> build/components/mqttClient/MqttClientList.js
+src/app/components/mqttClient/MqttClientPublisher.js -> build/components/mqttClient/MqttClientPublisher.js
+src/app/components/mqttClient/MqttClientSubscriber.js -> build/components/mqttClient/MqttClientSubscriber.js
+src/app/components/mqttLoad/AddEditMqttLoad.js -> build/components/mqttLoad/AddEditMqttLoad.js
+src/app/components/mqttLoad/MqttLoadDashboard.js -> build/components/mqttLoad/MqttLoadDashboard.js
+src/app/components/mqttLoad/MqttLoadInstance.js -> build/components/mqttLoad/MqttLoadInstance.js
+src/app/components/mqttLoad/MqttLoadList.js -> build/components/mqttLoad/MqttLoadList.js
+src/app/components/mqttLoad/MqttLoadTestData.js -> build/components/mqttLoad/MqttLoadTestData.js
+src/app/components/mqttLoad/MqttLoadTestGraph.js -> build/components/mqttLoad/MqttLoadTestGraph.js
+src/app/components/mqttVirtualDevices/AddEditVirtualDeviceProfile.js -> build/components/mqttVirtualDevices/AddEditVirtualDeviceProfile.js
+src/app/components/mqttVirtualDevices/VirtualDeviceAutoResponseSettings.js -> build/components/mqttVirtualDevices/VirtualDeviceAutoResponseSettings.js
+src/app/components/mqttVirtualDevices/VirtualDeviceConnectionSettings.js -> build/components/mqttVirtualDevices/VirtualDeviceConnectionSettings.js
+src/app/components/mqttVirtualDevices/VirtualDeviceProfileList.js -> build/components/mqttVirtualDevices/VirtualDeviceProfileList.js
+src/app/components/mqttVirtualDevices/VirtualDevicePublishMessageSettings.js -> build/components/mqttVirtualDevices/VirtualDevicePublishMessageSettings.js
+src/app/components/mqttVirtualDevices/VirtualDeviceSubscribeMessageSettings.js -> build/components/mqttVirtualDevices/VirtualDeviceSubscribeMessageSettings.js
+src/app/dispatcher/AppDispatcher.js -> build/dispatcher/AppDispatcher.js
+src/app/dispatcher/CommonEventEmitter.js -> build/dispatcher/CommonEventEmitter.js
+src/app/models/MqttClientSettings.js -> build/models/MqttClientSettings.js
+src/app/models/MqttLoadSettings.js -> build/models/MqttLoadSettings.js
+src/app/models/PublisherSettings.js -> build/models/PublisherSettings.js
+src/app/models/SubscriberSettings.js -> build/models/SubscriberSettings.js
+src/app/platform/ElectronMain.js -> build/platform/ElectronMain.js
+src/app/platform/PlatformDispatcherService.js -> build/platform/PlatformDispatcherService.js
+src/app/platform/PlatformMqttClientService.js -> build/platform/PlatformMqttClientService.js
+src/app/platform/PlatformMqttClientWorkerService.js -> build/platform/PlatformMqttClientWorkerService.js
+src/app/platform/PlatformMqttLoadService.js -> build/platform/PlatformMqttLoadService.js
+src/app/platform/PlatformMqttLoadWorkerService.js -> build/platform/PlatformMqttLoadWorkerService.js
+src/app/platform/common/PlatformConstants.js -> build/platform/common/PlatformConstants.js
+src/app/platform/common/PlatformUtils.js -> build/platform/common/PlatformUtils.js
+src/app/services/MqttClientDbService.js -> build/services/MqttClientDbService.js
+src/app/services/MqttClientService.js -> build/services/MqttClientService.js
+src/app/services/MqttLoadDbService.js -> build/services/MqttLoadDbService.js
+src/app/services/MqttLoadService.js -> build/services/MqttLoadService.js
+src/app/utils/AppRoutes.js -> build/utils/AppRoutes.js
+src/app/utils/CommonConstants.js -> build/utils/CommonConstants.js
+src/app/utils/MqttClientConstants.js -> build/utils/MqttClientConstants.js
+src/app/utils/MqttLoadConstants.js -> build/utils/MqttLoadConstants.js
+src/app/utils/NavUtils.js -> build/utils/NavUtils.js
+src/app/workers/MqttClientConnectionWorker.js -> build/workers/MqttClientConnectionWorker.js
+src/app/workers/MqttLoadTestWorker.js -> build/workers/MqttLoadTestWorker.js
+✔ ten concurrent child load workers publish and archive 500 QoS 1 messages each (1925.523125ms)
+✔ username and password authenticate the connection worker before message delivery (10.332208ms)
+✔ an incorrect broker password emits a connection error without authorizing a session (0.976458ms)
+✔ MQTT 3.1 connects with MQIsdp and exchanges QoS 2 messages (1.752875ms)
+✔ abrupt worker process termination publishes and retains its configured last will (73.5065ms)
+✔ the connection worker reconnects and restores wildcard delivery after socket loss (53.983792ms)
+✔ stop ends a QoS 1 load while the broker withholds PUBACK (277.750292ms)
+✔ timeout ends a QoS 1 load while the broker withholds PUBACK (375.575791ms)
+✔ stop ends a QoS 2 load while the broker withholds PUBCOMP (120.306958ms)
+✔ timeout ends a QoS 2 load while the broker withholds PUBCOMP (362.558166ms)
+✔ publish load counts 32 real broker messages at numeric QoS 0 (283.124458ms)
+✔ publish load counts 32 real broker messages at numeric QoS 1 (214.668042ms)
+✔ publish load counts 32 real broker messages at numeric QoS 2 (222.782209ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 0 (4.833792ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 1 (6.439083ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 2 (11.712125ms)
+✔ publish load accepts the UI's string QoS '1' (142.418708ms)
+✔ subscribe load accepts the UI's string QoS '1' (82.105542ms)
+✔ publish load accepts the UI's string QoS '2' (135.119917ms)
+✔ subscribe load accepts the UI's string QoS '2' (84.663333ms)
+✔ stopping a running publish load reports partial real counts and ends once (154.446666ms)
+✔ an empty subscribe load times out with zero counts and no completion status (193.527708ms)
+✔ load worker delivers a large complete archive over child IPC before exiting (99.412958ms)
+✔ TLS custom CA validates the local broker certificate (42.990917ms)
+✔ TLS client-certificate mode authenticates the supplied key and certificate (4.696292ms)
+✔ self-signed mode explicitly accepts an untrusted server certificate (3.435292ms)
+(node:46121) [DEP0044] DeprecationWarning: The `util.isArray` API is deprecated. Please use `Array.isArray()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ custom CA mode rejects a broker signed by a different authority (2.734ms)
+✔ WebSocket transport exchanges MQTT messages on a URL path (28.368042ms)
+✔ secure WebSocket transport honors the configured CA (5.523833ms)
+✔ connection worker delivers QoS 0 and completes its protocol acknowledgement (82.949292ms)
+✔ connection worker delivers QoS 1 and completes its protocol acknowledgement (10.488875ms)
+✔ connection worker delivers QoS 2 and completes its protocol acknowledgement (9.440042ms)
+✔ wildcard subscriptions preserve the matching filter and unsubscribe removes delivery (89.90075ms)
+✔ a new subscription receives retained payload and its retained flag (7.208917ms)
+✔ connection worker exchanges messages and disconnects through real child IPC (124.400791ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2215.653875

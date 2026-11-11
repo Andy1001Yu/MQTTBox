@@ -1,0 +1,9 @@
+Windows before network interception: 0
+locator.waitFor: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('#app .navbar').first() to be visible[22m
+
+    at [stdin]:18:48 {
+  log: [ "  - waiting for locator('#app .navbar').first() to be visible" ],
+  name: 'TimeoutError'
+}

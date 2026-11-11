@@ -1,0 +1,15 @@
+GitHub release check intercepted; its route was installed before window creation.
+Electron 45.3.0 arm64; packaged=false
+Application: <WORKSPACE>
+AssertionError [ERR_ASSERTION]: the page CSP must block a dynamically injected inline script
++ actual - expected
+
++ true
+- undefined
+
+    at verifyInlineScriptPolicy (<WORKSPACE>/test/electron-smoke.cjs:88:10)
+    at async main (<WORKSPACE>/test/electron-smoke.cjs:269:3)
+Broker observations: {"connections":[],"subscriptions":[],"publications":[],"errors":[],"apiRequests":[{"url":"https://api.github.com/repos/Andy1001Yu/MQTTBox/releases/latest","method":"GET"}],"blockedRequests":[]}
+UI at failure:  MenuMQTT CLIENTS
+Create MQTT Client
+No MQTT clients added. Click Create MQTT Client to add new MQTT client

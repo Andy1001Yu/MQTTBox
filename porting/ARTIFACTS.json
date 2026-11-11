@@ -1,0 +1,26 @@
+[
+  {
+    "version": "0.2.2-macos.1",
+    "arch": "arm64",
+    "dmg": "MQTTBox-0.2.2-macos.1-mac-arm64.dmg",
+    "bytes": 127037474,
+    "sha256": "4ca7c567d9f7fb943733245adeb9c8eee19e740613d4c26ae6ffaa1eb5c1c2d8",
+    "app": "dist/mac-arm64/MQTTBox.app",
+    "appAsarSha256": "a5ca6269d658ea88f302ce9e9760451b9dfae14ec01df40b8ead50a2d69cb05a",
+    "minimumMacOS": "13.0",
+    "signature": "ad-hoc",
+    "notarized": false
+  },
+  {
+    "version": "0.2.2-macos.1",
+    "arch": "x64",
+    "dmg": "MQTTBox-0.2.2-macos.1-mac-x64.dmg",
+    "bytes": 134008287,
+    "sha256": "3dfbfdd5634f29abec4a58a52abc61ef8f07b7bf7178e8fd4daa572802de41fc",
+    "app": "dist/mac/MQTTBox.app",
+    "appAsarSha256": "a5ca6269d658ea88f302ce9e9760451b9dfae14ec01df40b8ead50a2d69cb05a",
+    "minimumMacOS": "13.0",
+    "signature": "ad-hoc",
+    "notarized": false
+  }
+]

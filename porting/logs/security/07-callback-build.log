@@ -1,0 +1,5 @@
+
+> MQTTBox@0.2.2-macos.1 build
+> node scripts/build.cjs
+
+Successfully compiled 52 files with Babel (330ms).

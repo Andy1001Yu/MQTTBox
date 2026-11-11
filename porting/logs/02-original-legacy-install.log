@@ -1,0 +1,70 @@
+npm warn deprecated path-dirname@1.0.2: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+npm warn deprecated natives@1.1.6: This module relies on Node.js's internals and will break at some point. Do not use it, and update to graceful-fs@4.x.
+npm warn deprecated source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated
+npm warn deprecated source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
+npm warn deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+npm warn deprecated formidable@1.0.17: Please upgrade to latest, formidable@v2 or formidable@v3! Check these notes: https://bit.ly/2ZEqIau
+npm warn deprecated express@2.5.11: express 2.x series is deprecated
+npm warn deprecated json3@3.3.2: Please use the native JSON object instead of JSON 3
+npm warn deprecated sntp@1.0.9: This module moved to @hapi/sntp. Please make sure to switch over as this distribution is no longer supported and may contain bugs and critical security issues.
+npm warn deprecated cryptiles@2.0.5: This version has been deprecated in accordance with the hapi support policy (hapi.im/support). Please upgrade to the latest version to get the best features, bug fixes, and security patches. If you are unable to upgrade at this time, paid support is available for older versions (hapi.im/commercial).
+npm warn deprecated boom@2.10.1: This version has been deprecated in accordance with the hapi support policy (hapi.im/support). Please upgrade to the latest version to get the best features, bug fixes, and security patches. If you are unable to upgrade at this time, paid support is available for older versions (hapi.im/commercial).
+npm warn deprecated hoek@2.16.3: This version has been deprecated in accordance with the hapi support policy (hapi.im/support). Please upgrade to the latest version to get the best features, bug fixes, and security patches. If you are unable to upgrade at this time, paid support is available for older versions (hapi.im/commercial).
+npm warn deprecated har-validator@2.0.6: this library is no longer supported
+npm warn deprecated hawk@3.1.3: This module moved to @hapi/hawk. Please make sure to switch over as this distribution is no longer supported and may contain bugs and critical security issues.
+npm warn deprecated lodash.template@3.6.2: This package is deprecated. Use https://socket.dev/npm/package/eta instead.
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated electron-download@3.3.0: Please use @electron/get moving forward.
+npm warn deprecated home-path@1.0.7: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated fsevents@1.2.13: Upgrade to fsevents v2 to mitigate potential security issues
+npm warn deprecated ua-parser-js@0.7.10: You are using an outdated version of ua-parser-js. Please update to ua-parser-js v0.7.33 / v1.0.33 / v2.0.0 (or later) to avoid ReDoS vulnerability [CVE-2022-25927](https://github.com/advisories/GHSA-fhg7-m89q-25r3)
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated q@1.4.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated request@2.78.0: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated gulp-util@3.0.7: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+npm warn deprecated node-uuid@1.4.7: Use uuid module instead
+npm warn deprecated babel-preset-es2015@6.18.0: 🙌  Thanks for using Babel: we recommend using babel-preset-env now: please read https://babeljs.io/env to update!
+npm warn deprecated recharts@0.18.0: 1.x and 2.x branches are no longer active. Bump to Recharts v3 to receive latest features and bugfixes. See https://github.com/recharts/recharts/wiki/3.0-migration-guide
+npm warn deprecated mkdirp@0.3.0: Legacy versions of mkdirp are no longer supported. Please update to mkdirp 1.x. (Note that the API surface has changed to use Promises in 1.x.)
+npm warn deprecated graceful-fs@1.2.3: please upgrade to graceful-fs 4 for compatibility with current and future versions of Node.js
+npm warn deprecated glob@3.1.21: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated minimatch@0.2.14: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+npm warn deprecated json3@3.2.6: Please use the native JSON object instead of JSON 3
+npm warn deprecated connect@1.9.2: connect 1.x series is deprecated
+npm warn deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+npm warn deprecated glob@4.5.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated minimatch@2.0.10: Please update to minimatch 3.0.2 or higher to avoid a RegExp DoS issue
+npm warn deprecated request@2.65.0: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated tough-cookie@2.2.2: ReDoS vulnerability parsing Set-Cookie https://nodesecurity.io/advisories/130
+npm warn deprecated core-js@1.2.7: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+npm warn deprecated glob@5.0.15: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm error code 1
+npm error path <WORKSPACE>/node_modules/electron
+npm error command failed
+npm error command sh -c node install.js
+npm error Downloading electron-v1.8.8-darwin-arm64.zip
+npm error [>                                            ] 0.0% (0 B/s)
+npm error ^[[1000D^[[0K^[[1A^[[1000D^[[0K^[[1A^[[1000D^[[0KDownloading electron-v1.8.8-darwin-arm64.zip
+npm error Error: GET https://github.com/electron/electron/releases/download/v1.8.8/electron-v1.8.8-darwin-arm64.zip returned 404
+npm error <WORKSPACE>/node_modules/electron/install.js:47
+npm error   throw err
+npm error   ^
+npm error
+npm error Error: Failed to find Electron v1.8.8 for darwin-arm64 at https://github.com/electron/electron/releases/download/v1.8.8/electron-v1.8.8-darwin-arm64.zip
+npm error     at Request.<anonymous> (<WORKSPACE>/node_modules/nugget/index.js:197:61)
+npm error     at Request.emit (node:events:509:20)
+npm error     at Request.onRequestResponse (<WORKSPACE>/node_modules/request/request.js:986:10)
+npm error     at ClientRequest.emit (node:events:509:20)
+npm error     at HTTPParser.parserOnIncomingClient [as onIncoming] (node:_http_client:798:27)
+npm error     at HTTPParser.parserOnHeadersComplete (node:_http_common:125:17)
+npm error     at TLSSocket.socketOnData (node:_http_client:633:22)
+npm error     at TLSSocket.emit (node:events:509:20)
+npm error     at addChunk (node:internal/streams/readable:564:12)
+npm error     at readableAddChunkPushByteMode (node:internal/streams/readable:515:3)
+npm error
+npm error Node.js v26.0.0
+npm error A complete log of this run can be found in: <HOME>/.npm/_logs/2026-11-11T08_31_38_602Z-debug-0.log

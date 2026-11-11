@@ -1,0 +1,122 @@
+{
+  "collected_date": "2026-11-11",
+  "mqttbox_upstream_commit": "6422e4039264183c7cd576b622e567a2d8ab942f",
+  "spdx_reference_commit": "31846481de7ea17d92f2f46fad76abe58b2e9bb0",
+  "scope": "Supplemental packaging notices for the MQTTBox electron_app checkout; not a new project-wide license grant. Exact upstream text files are byte-preserved. Supplement files identify their assembly and sources.",
+  "files": [
+    {
+      "file": "bootstrap-3.3.7-LICENSE.txt",
+      "kind": "versioned-upstream-license-verbatim",
+      "source_urls": [
+        "https://raw.githubusercontent.com/twbs/bootstrap/v3.3.7/LICENSE"
+      ],
+      "sha256": "8a68c27ad022244b78dc5c9adb4cc5a4c92a994e3e11d356b291f227b2b04eaf",
+      "bytes": 1085
+    },
+    {
+      "file": "jquery-3.1.0-LICENSE.txt",
+      "kind": "versioned-upstream-license-verbatim",
+      "source_urls": [
+        "https://raw.githubusercontent.com/jquery/jquery/3.1.0/LICENSE.txt"
+      ],
+      "sha256": "f980a306a01e5881cc8004115f7e6dde44e7f5296477237d37d169a86ce7c094",
+      "bytes": 1606
+    },
+    {
+      "file": "fixed-data-table-0.6.3-LICENSE.txt",
+      "kind": "versioned-upstream-license-verbatim",
+      "source_urls": [
+        "https://raw.githubusercontent.com/facebookarchive/fixed-data-table/v0.6.3/LICENSE"
+      ],
+      "sha256": "658d037c5c078a24c27ab1e0f37050d407ad6628be94886a4e48f3e761f47f7d",
+      "bytes": 1527
+    },
+    {
+      "file": "fixed-data-table-0.6.3-PATENTS.txt",
+      "kind": "versioned-upstream-license-verbatim",
+      "source_urls": [
+        "https://raw.githubusercontent.com/facebookarchive/fixed-data-table/v0.6.3/PATENTS"
+      ],
+      "sha256": "92b7616364b712689aa89ac123f62bb4935f5448d4a0767003a51a9cac8a15e9",
+      "bytes": 1985
+    },
+    {
+      "file": "normalize-3.0.3-LICENSE.txt",
+      "kind": "versioned-upstream-license-verbatim",
+      "source_urls": [
+        "https://raw.githubusercontent.com/necolas/normalize.css/3.0.3/LICENSE.md"
+      ],
+      "sha256": "8781bc9996713938f6baea8a10c8426f9ae06778e562fafe5353669ae6c05f07",
+      "bytes": 1074
+    },
+    {
+      "file": "MIT-standard-reference.txt",
+      "kind": "official-standard-reference-verbatim",
+      "source_urls": [
+        "https://raw.githubusercontent.com/spdx/license-list-data/31846481de7ea17d92f2f46fad76abe58b2e9bb0/text/MIT.txt"
+      ],
+      "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+      "bytes": 1078
+    },
+    {
+      "file": "OFL-1.1-standard-reference.txt",
+      "kind": "official-standard-reference-verbatim",
+      "source_urls": [
+        "https://raw.githubusercontent.com/spdx/license-list-data/31846481de7ea17d92f2f46fad76abe58b2e9bb0/text/OFL-1.1.txt"
+      ],
+      "sha256": "8eea8287e5876b539670cadb82e99f9a7afddec6f6730811be1daf25d2e9bcfd",
+      "bytes": 4016
+    },
+    {
+      "file": "MQTTBox-manifest-MIT-supplement.txt",
+      "kind": "supplemental-porting-notice-not-original-upstream-file",
+      "source_urls": [
+        "https://github.com/workswithweb/MQTTBox/blob/6422e4039264183c7cd576b622e567a2d8ab942f/src/www/package.json",
+        "https://raw.githubusercontent.com/spdx/license-list-data/31846481de7ea17d92f2f46fad76abe58b2e9bb0/text/MIT.txt"
+      ],
+      "sha256": "44795d4ab0513ec39cf977f3576b8fc8269303b9daf85a522a6892706978676e",
+      "bytes": 2229
+    },
+    {
+      "file": "font-awesome-4.6.3-CSS-MIT-supplement.txt",
+      "kind": "supplemental-porting-notice-not-original-upstream-file",
+      "source_urls": [
+        "https://github.com/FortAwesome/Font-Awesome/blob/v4.6.3/README.md#license",
+        "local:src/www/lib/fontawesome/css/font-awesome.min.css",
+        "https://raw.githubusercontent.com/spdx/license-list-data/31846481de7ea17d92f2f46fad76abe58b2e9bb0/text/MIT.txt"
+      ],
+      "sha256": "48dd0e2be559a836d27e0ceb87cee235818e06f9f588eb48b92f16716ead63f5",
+      "bytes": 2024
+    },
+    {
+      "file": "font-awesome-4.6.3-font-OFL-supplement.txt",
+      "kind": "supplemental-porting-notice-not-original-upstream-file",
+      "source_urls": [
+        "https://github.com/FortAwesome/Font-Awesome/blob/v4.6.3/README.md#license",
+        "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/v4.6.3/fonts/FontAwesome.otf",
+        "https://raw.githubusercontent.com/spdx/license-list-data/31846481de7ea17d92f2f46fad76abe58b2e9bb0/text/OFL-1.1.txt"
+      ],
+      "sha256": "d3e5ce14c3a81218312b07ae4dac15d18b9645b10a440c2bdbff3684bcca27c9",
+      "bytes": 4966
+    },
+    {
+      "file": "font-awesome-4.6.3-BRAND-NOTICE.txt",
+      "kind": "supplemental-porting-notice-not-original-upstream-file",
+      "source_urls": [
+        "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/v4.6.3/src/_includes/brand-license.html"
+      ],
+      "sha256": "d9949ee6122d0de9670bf7461e476472e7e0611267e0f9a82fa4d5fa6185719e",
+      "bytes": 543
+    },
+    {
+      "file": "bootstrap-3.3.7-GLYPHICONS-NOTICE.txt",
+      "kind": "supplemental-porting-notice-not-original-upstream-file",
+      "source_urls": [
+        "https://github.com/twbs/bootstrap/blob/v3.3.7/docs/_includes/components/glyphicons.html",
+        "local:src/www/lib/bootstrap/fonts/glyphicons-halflings-regular.ttf"
+      ],
+      "sha256": "8daa42ccd8b03e58181e1d26161376eb8029ad6da8581b8c32bf1b0a97242a6d",
+      "bytes": 871
+    }
+  ]
+}
