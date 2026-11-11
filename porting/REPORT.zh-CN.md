@@ -87,3 +87,7 @@ ELECTRON_RUN_AS_NODE=1 MQTTBOX_TEST_BUILD_DIR="$PWD/dist/mac-arm64/MQTTBox.app/C
 CI改为测试文件串行执行，取消测试先确认真实ACK被持有，再严格测量原生产2秒总超时与最多1.2秒终止余量；10实例保留5000条精确送达/归档，使用产品默认30秒超时和父35秒上界，不把请求的1.5秒发送节奏当作硬件性能断言。隔离Node24.22.2本地完整71/71通过：[日志](logs/security/27-node24-full-regression.log)。这轮只改测试/工作流，生产源码、依赖与已上传安装包保持一致；原生CI复核结果见Actions。
 
 测试证书最终使用fixture私有openssl.cnf，CA扩展只定义一次，不再把-addext追加到系统默认v3_ca。已识别的兼容机制见[OpenSSL上游问题14457](https://github.com/openssl/openssl/issues/14457)。原生产TLS验证和安装包未改；最终本地必要回归仍为71/71（[日志](logs/security/34-final-necessary-regression.log)）。临时深度诊断工作流已移除，仅保留正常双架构构建工作流；历史失败证据未删除。
+
+## 收尾交付
+
+[Release v0.2.2-macos.1](https://github.com/Andy1001Yu/MQTTBox/releases/tag/v0.2.2-macos.1)已正式发布，标签指向b88213c346387d3438a8259aadebd3362390ff85。两份DMG、审计与清单的GitHub摘要/大小/上传状态已逐项比对本地，全部相符，见[GITHUB-DELIVERY.json](GITHUB-DELIVERY.json)。最后必要本地回归71/71，双包UI验证及完整npm审计0的结果保持。收尾核对时[最终云端CI](https://github.com/Andy1001Yu/MQTTBox/actions/runs/43011818395)仍在运行，未将其计为通过；历史诊断失败已保留，不再追加调查。
