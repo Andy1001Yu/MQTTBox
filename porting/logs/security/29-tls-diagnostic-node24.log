@@ -1,0 +1,16 @@
+TLS fixture diagnostics: {"node":"24.22.2","opensslLibrary":"3.5.9","opensslCommand":"LibreSSL 3.3.6","strictVerification":"passed","ca":{"type":"string","bytes":1090,"fingerprint256":"E0:31:A9:F1:45:15:9D:A8:1E:C3:F0:F0:14:CA:1B:1E:AF:7E:38:AD:26:48:3B:1B:62:0B:2D:A2:B1:AD:B1:21","subject":"CN=MQTTBox Test CA","issuer":"CN=MQTTBox Test CA","validFrom":"Nov 11 11:07:33 2026 GMT","validTo":"Nov 13 11:07:33 2026 GMT"},"server":{"type":"Buffer","bytes":1164,"fingerprint256":"FC:DA:15:75:C5:DE:2A:B4:E0:27:07:C3:29:85:F4:DD:D1:B8:F3:91:A1:5A:3F:AE:85:70:9C:52:D5:AB:3C:16","subject":"CN=localhost","issuer":"CN=MQTTBox Test CA","subjectAltName":"DNS:localhost, IP Address:127.0.0.1","validFrom":"Nov 11 11:07:33 2026 GMT","validTo":"Nov 13 11:07:33 2026 GMT"},"client":{"type":"string","bytes":1135,"fingerprint256":"74:DD:78:27:F6:30:F9:04:70:0A:1C:27:56:53:BB:59:05:A5:C6:F2:66:E7:4D:F9:89:9D:EE:34:FD:1E:EE:62","subject":"CN=mqttbox-client","issuer":"CN=MQTTBox Test CA","validFrom":"Nov 11 11:07:33 2026 GMT","validTo":"Nov 13 11:07:33 2026 GMT"}}
+✔ TLS custom CA validates the local broker certificate (28.869209ms)
+✔ TLS client-certificate mode authenticates the supplied key and certificate (4.964083ms)
+✔ CA-signed mode rejects an untrusted server certificate over mqtts (2.750792ms)
+✔ CA-signed mode rejects an untrusted server certificate over wss (16.38525ms)
+✔ custom CA mode rejects a broker signed by a different authority (2.101042ms)
+✔ WebSocket transport exchanges MQTT messages on a URL path (4.557625ms)
+✔ secure WebSocket transport honors the configured CA (3.907958ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 415.853541

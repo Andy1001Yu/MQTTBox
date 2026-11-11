@@ -8,6 +8,7 @@ const net = require('node:net');
 const os = require('node:os');
 const path = require('node:path');
 const tls = require('node:tls');
+const {X509Certificate} = require('node:crypto');
 const { execFileSync, fork } = require('node:child_process');
 const { EventEmitter } = require('node:events');
 const mqtt = require('mqtt');
@@ -56,6 +57,36 @@ async function bounded(promise, description, timeout = 5000) {
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function certificateInfo(value) {
+  if (Array.isArray(value)) return value.map(certificateInfo);
+  const info = {type: Buffer.isBuffer(value) ? 'Buffer' : typeof value,
+    bytes: typeof value === 'string' || Buffer.isBuffer(value) ? Buffer.byteLength(value) : 0};
+  if (!info.bytes) return info;
+  try {
+    const certificate = new X509Certificate(value);
+    return {...info, fingerprint256: certificate.fingerprint256, subject: certificate.subject,
+      issuer: certificate.issuer, subjectAltName: certificate.subjectAltName,
+      validFrom: certificate.validFrom, validTo: certificate.validTo};
+  } catch (error) {
+    return {...info, parseError: error.message};
+  }
+}
+
+function tlsSocketInfo(socket) {
+  if (!socket || typeof socket.getPeerCertificate !== 'function') return undefined;
+  const chain = [];
+  const seen = new Set();
+  let peer = socket.getPeerCertificate(true);
+  while (peer && peer.raw && !seen.has(peer.fingerprint256) && chain.length < 4) {
+    seen.add(peer.fingerprint256);
+    chain.push(certificateInfo(peer.raw));
+    peer = peer.issuerCertificate;
+  }
+  return {remoteAddress: socket.remoteAddress, remoteFamily: socket.remoteFamily,
+    authorized: socket.authorized, authorizationError: socket.authorizationError,
+    protocol: socket.getProtocol(), peerChain: chain};
 }
 
 async function startBroker(t, options = {}) {
@@ -175,11 +206,24 @@ async function connectWorker(worker, settings) {
     data => data.connState === CLIENT.CONNECTION_STATE_CONNECTED);
   worker.processAction({ actionType: CLIENT.ACTION_MQTT_CLIENT_CONNECT, data: settings });
   const errors = [];
+  const handshakes = [];
+  const captureHandshake = socket => {
+    if (socket && typeof socket.getPeerCertificate === 'function') {
+      // Read the peer before Node's secure listener rejects an untrusted chain.
+      // This observes the handshake without changing verification or trust.
+      socket.prependOnceListener('secure', () => handshakes.push(tlsSocketInfo(socket)));
+    }
+  };
+  captureHandshake(worker.client.stream);
   const record = source => error => errors.push({source, code: error.code, message: error.message,
     errors: error.errors && error.errors.map(item => ({code: item.code, message: item.message}))});
   const onClientError = record('mqtt');
   const onSocketError = record('websocket');
   const socket = worker.client.stream.socket;
+  if (socket && socket._req) {
+    if (socket._req.socket) captureHandshake(socket._req.socket);
+    else socket._req.once('socket', captureHandshake);
+  }
   worker.client.on('error', onClientError);
   if (socket) socket.on('error', onSocketError);
   try {
@@ -188,6 +232,10 @@ async function connectWorker(worker, settings) {
     const stream = worker.client.stream;
     throw new Error(`${error.message}; connection diagnostics: ${JSON.stringify({
       protocol: settings.protocol, host: settings.host, errors,
+      certificateType: settings.certificateType, configuredCA: certificateInfo(settings.caFile),
+      clientCA: certificateInfo(worker.client.options.ca),
+      websocketCA: certificateInfo(worker.client.options.wsOptions && worker.client.options.wsOptions.ca),
+      rejectUnauthorized: worker.client.options.rejectUnauthorized, handshakes,
       connected: worker.client.connected, destroyed: stream.destroyed,
       authorizationError: stream.authorizationError,
       remoteAddress: stream.remoteAddress, remoteFamily: stream.remoteFamily
@@ -232,7 +280,7 @@ function makeCertificates() {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'mqttbox-tls-'));
   const file = name => path.join(directory, name);
   function openssl(args) {
-    execFileSync('openssl', args, { cwd: directory, stdio: 'pipe', timeout: 15000 });
+    return execFileSync('openssl', args, { cwd: directory, stdio: 'pipe', timeout: 15000 });
   }
   try {
     openssl(['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-days', '2', '-subj', '/CN=MQTTBox Test CA',
@@ -247,11 +295,18 @@ function makeCertificates() {
       openssl(['x509', '-req', '-days', '2', '-in', `${name}.csr`, '-CA', 'ca.pem', '-CAkey', 'ca.key', '-CAcreateserial',
         '-extfile', `${name}.ext`, '-out', `${name}.pem`]);
     }
+    openssl(['verify', '-x509_strict', '-CAfile', 'ca.pem', 'server.pem', 'client.pem']);
     openssl(['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-days', '2', '-subj', '/CN=localhost',
       '-keyout', 'self.key', '-out', 'self.pem', '-addext', 'subjectAltName=DNS:localhost,IP:127.0.0.1']);
-    return { directory, ca: fs.readFileSync(file('ca.pem'), 'utf8'),
-      server: { key: fs.readFileSync(file('server.key')), cert: fs.readFileSync(file('server.pem')) },
-      clientKey: fs.readFileSync(file('client.key'), 'utf8'), clientCert: fs.readFileSync(file('client.pem'), 'utf8'),
+    const ca = fs.readFileSync(file('ca.pem'), 'utf8');
+    const serverCert = fs.readFileSync(file('server.pem'));
+    const clientCert = fs.readFileSync(file('client.pem'), 'utf8');
+    return { directory, ca,
+      diagnostics: {node: process.versions.node, opensslLibrary: process.versions.openssl,
+        opensslCommand: openssl(['version']).toString().trim(), strictVerification: 'passed',
+        ca: certificateInfo(ca), server: certificateInfo(serverCert), client: certificateInfo(clientCert)},
+      server: { key: fs.readFileSync(file('server.key')), cert: serverCert },
+      clientKey: fs.readFileSync(file('client.key'), 'utf8'), clientCert,
       self: { key: fs.readFileSync(file('self.key')), cert: fs.readFileSync(file('self.pem')) },
       remove() { fs.rmSync(directory, { recursive: true, force: true }); }
     };

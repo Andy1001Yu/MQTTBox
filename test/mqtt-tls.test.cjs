@@ -1,20 +1,48 @@
 'use strict';
 
 const assert = require('node:assert/strict');
+const tls = require('node:tls');
 const { test, before, after } = require('node:test');
 const { CLIENT, startBroker, clientSettings, observeWorker, clientEvent,
   connectWorker, subscribeWorker, makeCertificates, waitFor } = require('./helpers/mqtt-harness.cjs');
 
 let certificates;
-before(() => { certificates = makeCertificates(); });
+before(() => {
+  certificates = makeCertificates();
+  console.log('TLS fixture diagnostics:', JSON.stringify(certificates.diagnostics));
+});
 after(() => { if (certificates) certificates.remove(); });
+
+async function nativeTlsControl(server, overrides, host) {
+  return new Promise(resolve => {
+    const socket = tls.connect({host, port: server.port, ca: overrides.caFile,
+      cert: overrides.clientCertificateFile, key: overrides.clientKeyFile,
+      passphrase: overrides.clientKeyPassphrase, rejectUnauthorized: true,
+      ...(overrides.sslTlsVersion && overrides.sslTlsVersion !== 'auto' ?
+        {secureProtocol: overrides.sslTlsVersion} : {})});
+    const timer = setTimeout(() => finish({outcome: 'timeout'}), 2500);
+    function finish(result) {
+      clearTimeout(timer);
+      socket.destroy();
+      resolve({host, ...result});
+    }
+    socket.once('secureConnect', () => finish({outcome: 'connected', authorized: socket.authorized,
+      remoteAddress: socket.remoteAddress, protocol: socket.getProtocol(),
+      peerFingerprint256: socket.getPeerCertificate().fingerprint256}));
+    socket.once('error', error => finish({outcome: 'error', code: error.code, message: error.message}));
+  });
+}
 
 async function roundTrip(t, server, overrides = {}) {
   const { worker } = observeWorker(t);
   try {
     await connectWorker(worker, clientSettings(server, overrides));
   } catch (error) {
-    throw new Error(`${error.message}; broker TLS errors: ${JSON.stringify(server.tlsErrors)}`, {cause: error});
+    const nativeControls = server.protocol === 'mqtts' || server.protocol === 'wss' ?
+      await Promise.all(['localhost', '127.0.0.1'].map(host => nativeTlsControl(server, overrides, host))) : [];
+    throw new Error(`${error.message}; fixture certificates: ${JSON.stringify(certificates.diagnostics)}; ` +
+      `native TLS controls: ${JSON.stringify(nativeControls)}; broker TLS errors: ${JSON.stringify(server.tlsErrors)}`,
+    {cause: error});
   }
   await subscribeWorker(worker, 'secure/roundtrip', '1');
   const received = clientEvent(worker, CLIENT.EVENT_MQTT_CLIENT_SUBSCRIBED_DATA_RECIEVED);

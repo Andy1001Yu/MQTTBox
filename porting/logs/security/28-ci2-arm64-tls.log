@@ -1,0 +1,62 @@
+✖ failing tests:
+2026-11-11T10:57:11.9536540Z
+2026-11-11T10:57:11.9536890Z test at test/mqtt-tls.test.cjs:29:1
+2026-11-11T10:57:11.9537590Z ✖ TLS custom CA validates the local broker certificate (5025.37575ms)
+2026-11-11T10:57:11.9539670Z   Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT; connection diagnostics: {"protocol":"mqtts","host":"localhost:49246","errors":[{"source":"mqtt","code":"UNABLE_TO_VERIFY_LEAF_SIGNATURE","message":"unable to verify the first certificate; if the root CA is installed locally, try running Node.js with --use-system-ca"}],"connected":false,"destroyed":true,"authorizationError":"UNABLE_TO_VERIFY_LEAF_SIGNATURE"}; broker TLS errors: [{"code":"ECONNRESET","message":"socket hang up"}]
+2026-11-11T10:57:11.9541510Z       at roundTrip (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:17:11)
+2026-11-11T10:57:11.9543330Z       at async TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:31:18)
+2026-11-11T10:57:11.9543940Z       at async Test.run (node:internal/test_runner/test:1409:7)
+2026-11-11T10:57:11.9544520Z       at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+2026-11-11T10:57:11.9546380Z     [cause]: Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT; connection diagnostics: {"protocol":"mqtts","host":"localhost:49246","errors":[{"source":"mqtt","code":"UNABLE_TO_VERIFY_LEAF_SIGNATURE","message":"unable to verify the first certificate; if the root CA is installed locally, try running Node.js with --use-system-ca"}],"connected":false,"destroyed":true,"authorizationError":"UNABLE_TO_VERIFY_LEAF_SIGNATURE"}
+2026-11-11T10:57:11.9548140Z         at connectWorker (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:189:11)
+2026-11-11T10:57:11.9548850Z         at async roundTrip (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:15:5)
+2026-11-11T10:57:11.9549700Z         at async TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:31:18)
+2026-11-11T10:57:11.9550380Z         at async Test.run (node:internal/test_runner/test:1409:7)
+2026-11-11T10:57:11.9551050Z         at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+2026-11-11T10:57:11.9551760Z       [cause]: Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+2026-11-11T10:57:11.9552390Z           at Timeout.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:25:43)
+2026-11-11T10:57:11.9553070Z           at listOnTimeout (node:internal/timers:685:17)
+2026-11-11T10:57:11.9553530Z           at process.processTimers (node:internal/timers:618:7)
+2026-11-11T10:57:11.9554010Z     }
+2026-11-11T10:57:11.9554500Z   }
+2026-11-11T10:57:11.9554840Z
+2026-11-11T10:57:11.9555010Z test at test/mqtt-tls.test.cjs:36:1
+2026-11-11T10:57:11.9555850Z ✖ TLS client-certificate mode authenticates the supplied key and certificate (5006.110584ms)
+2026-11-11T10:57:11.9557790Z   Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT; connection diagnostics: {"protocol":"mqtts","host":"localhost:49250","errors":[{"source":"mqtt","code":"ECONNRESET","message":"Client network socket disconnected before secure TLS connection was established"}],"connected":false,"destroyed":true,"authorizationError":null}; broker TLS errors: [{"code":"ECONNRESET","message":"socket hang up"}]
+2026-11-11T10:57:11.9559380Z       at roundTrip (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:17:11)
+2026-11-11T10:57:11.9561450Z       at async TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:40:3)
+2026-11-11T10:57:11.9600210Z       at async Test.run (node:internal/test_runner/test:1409:7)
+2026-11-11T10:57:11.9602810Z       at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+2026-11-11T10:57:11.9604750Z     [cause]: Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT; connection diagnostics: {"protocol":"mqtts","host":"localhost:49250","errors":[{"source":"mqtt","code":"ECONNRESET","message":"Client network socket disconnected before secure TLS connection was established"}],"connected":false,"destroyed":true,"authorizationError":null}
+2026-11-11T10:57:11.9606110Z         at connectWorker (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:189:11)
+2026-11-11T10:57:11.9606690Z         at async roundTrip (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:15:5)
+2026-11-11T10:57:11.9607430Z         at async TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:40:3)
+2026-11-11T10:57:11.9608370Z         at async Test.run (node:internal/test_runner/test:1409:7)
+2026-11-11T10:57:11.9608900Z         at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+2026-11-11T10:57:11.9609360Z       [cause]: Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+2026-11-11T10:57:11.9610180Z           at Timeout.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:25:43)
+2026-11-11T10:57:11.9610750Z           at listOnTimeout (node:internal/timers:685:17)
+2026-11-11T10:57:11.9611190Z           at process.processTimers (node:internal/timers:618:7)
+2026-11-11T10:57:11.9611590Z     }
+2026-11-11T10:57:11.9611730Z   }
+2026-11-11T10:57:11.9611810Z
+2026-11-11T10:57:11.9611940Z test at test/mqtt-tls.test.cjs:90:1
+2026-11-11T10:57:11.9612570Z ✖ secure WebSocket transport honors the configured CA (5009.957917ms)
+2026-11-11T10:57:11.9614200Z   Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT; connection diagnostics: {"protocol":"wss","host":"localhost:49264/mqtt","errors":[{"source":"websocket","code":"UNABLE_TO_VERIFY_LEAF_SIGNATURE","message":"unable to verify the first certificate; if the root CA is installed locally, try running Node.js with --use-system-ca"}],"connected":false,"destroyed":true}; broker TLS errors: [{"code":"ECONNRESET","message":"socket hang up"}]
+2026-11-11T10:57:11.9615850Z       at roundTrip (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:17:11)
+2026-11-11T10:57:11.9616570Z       at async TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:92:3)
+2026-11-11T10:57:11.9617120Z       at async Test.run (node:internal/test_runner/test:1409:7)
+2026-11-11T10:57:11.9617700Z       at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+2026-11-11T10:57:11.9619360Z     [cause]: Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT; connection diagnostics: {"protocol":"wss","host":"localhost:49264/mqtt","errors":[{"source":"websocket","code":"UNABLE_TO_VERIFY_LEAF_SIGNATURE","message":"unable to verify the first certificate; if the root CA is installed locally, try running Node.js with --use-system-ca"}],"connected":false,"destroyed":true}
+2026-11-11T10:57:11.9620840Z         at connectWorker (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:189:11)
+2026-11-11T10:57:11.9621490Z         at async roundTrip (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:15:5)
+2026-11-11T10:57:11.9622320Z         at async TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:92:3)
+2026-11-11T10:57:11.9622870Z         at async Test.run (node:internal/test_runner/test:1409:7)
+2026-11-11T10:57:11.9623520Z         at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+2026-11-11T10:57:11.9624090Z       [cause]: Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+2026-11-11T10:57:11.9624850Z           at Timeout.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:25:43)
+2026-11-11T10:57:11.9625300Z           at listOnTimeout (node:internal/timers:685:17)
+2026-11-11T10:57:11.9625690Z           at process.processTimers (node:internal/timers:618:7)
+2026-11-11T10:57:11.9625950Z     }
+2026-11-11T10:57:11.9626240Z   }
+2026-11-11T10:57:11.9641360Z
