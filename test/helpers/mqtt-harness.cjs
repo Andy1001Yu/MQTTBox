@@ -279,32 +279,54 @@ function publish(client, topic, payload, options = {}) {
 function makeCertificates() {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'mqttbox-tls-'));
   const file = name => path.join(directory, name);
+  let diagnostics;
+  const publicCertificateText = {};
   function openssl(args) {
     return execFileSync('openssl', args, { cwd: directory, stdio: 'pipe', timeout: 15000 });
   }
   try {
+    const config = file('openssl.cnf');
+    // OpenSSL 1.1.1 appends -addext to system v3_ca defaults without deduping.
+    // Own the extension sections so every CLI emits each extension only once.
+    fs.writeFileSync(config, '[req]\ndistinguished_name=dn\n[dn]\nCN=MQTTBox fixture\n' +
+      '[ca_extensions]\nbasicConstraints=critical,CA:TRUE\nkeyUsage=critical,keyCertSign,cRLSign\nsubjectKeyIdentifier=hash\n' +
+      '[self_extensions]\nbasicConstraints=critical,CA:FALSE\nsubjectKeyIdentifier=hash\nsubjectAltName=DNS:localhost,IP:127.0.0.1\n');
     openssl(['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-days', '2', '-subj', '/CN=MQTTBox Test CA',
-      '-keyout', 'ca.key', '-out', 'ca.pem', '-addext', 'basicConstraints=critical,CA:TRUE',
-      '-addext', 'keyUsage=critical,keyCertSign,cRLSign', '-addext', 'subjectKeyIdentifier=hash']);
+      '-keyout', 'ca.key', '-out', 'ca.pem', '-config', config, '-extensions', 'ca_extensions']);
     const identifiers = 'subjectKeyIdentifier=hash\nauthorityKeyIdentifier=keyid:always\n';
     fs.writeFileSync(file('server.ext'), 'subjectAltName=DNS:localhost,IP:127.0.0.1\nextendedKeyUsage=serverAuth\nbasicConstraints=CA:FALSE\n' + identifiers);
     fs.writeFileSync(file('client.ext'), 'extendedKeyUsage=clientAuth\nbasicConstraints=CA:FALSE\n' + identifiers);
     for (const name of ['server', 'client']) {
       openssl(['req', '-new', '-newkey', 'rsa:2048', '-nodes', '-subj', `/CN=${name === 'server' ? 'localhost' : 'mqttbox-client'}`,
-        '-keyout', `${name}.key`, '-out', `${name}.csr`]);
+        '-keyout', `${name}.key`, '-out', `${name}.csr`, '-config', config]);
       openssl(['x509', '-req', '-days', '2', '-in', `${name}.csr`, '-CA', 'ca.pem', '-CAkey', 'ca.key', '-CAcreateserial',
         '-extfile', `${name}.ext`, '-out', `${name}.pem`]);
     }
-    openssl(['verify', '-x509_strict', '-CAfile', 'ca.pem', 'server.pem', 'client.pem']);
-    openssl(['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-days', '2', '-subj', '/CN=localhost',
-      '-keyout', 'self.key', '-out', 'self.pem', '-addext', 'subjectAltName=DNS:localhost,IP:127.0.0.1']);
     const ca = fs.readFileSync(file('ca.pem'), 'utf8');
     const serverCert = fs.readFileSync(file('server.pem'));
     const clientCert = fs.readFileSync(file('client.pem'), 'utf8');
+    const caCertificate = new X509Certificate(ca);
+    const chain = {};
+    for (const [name, pem] of [['ca', ca], ['server', serverCert], ['client', clientCert]]) {
+      const certificate = new X509Certificate(pem);
+      const text = openssl(['x509', '-in', `${name}.pem`, '-noout', '-text']).toString();
+      publicCertificateText[name] = text;
+      const extensions = label => [...text.matchAll(new RegExp(`X509v3 ${label}:([^]*?)(?=\\n\\s*X509v3|\\n\\s*Signature Algorithm:|$)`, 'g'))]
+        .map(match => match[1].trim());
+      chain[name] = {...certificateInfo(pem), subjectKeyIdentifiers: extensions('Subject Key Identifier'),
+        authorityKeyIdentifiers: extensions('Authority Key Identifier'),
+        basicConstraints: extensions('Basic Constraints'),
+        issuedByCA: certificate.checkIssued(caCertificate),
+        signatureVerifiedByCA: certificate.verify(caCertificate.publicKey)};
+    }
+    diagnostics = {node: process.versions.node, opensslLibrary: process.versions.openssl,
+      opensslCommand: openssl(['version']).toString().trim(), configuration: 'fixture-owned extension sections', ...chain};
+    console.log('TLS chain diagnostics before strict verification:', JSON.stringify(diagnostics));
+    openssl(['verify', '-x509_strict', '-CAfile', 'ca.pem', 'server.pem', 'client.pem']);
+    openssl(['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-days', '2', '-subj', '/CN=localhost',
+      '-keyout', 'self.key', '-out', 'self.pem', '-config', config, '-extensions', 'self_extensions']);
     return { directory, ca,
-      diagnostics: {node: process.versions.node, opensslLibrary: process.versions.openssl,
-        opensslCommand: openssl(['version']).toString().trim(), strictVerification: 'passed',
-        ca: certificateInfo(ca), server: certificateInfo(serverCert), client: certificateInfo(clientCert)},
+      diagnostics: {...diagnostics, strictVerification: 'passed'},
       server: { key: fs.readFileSync(file('server.key')), cert: serverCert },
       clientKey: fs.readFileSync(file('client.key'), 'utf8'), clientCert,
       self: { key: fs.readFileSync(file('self.key')), cert: fs.readFileSync(file('self.pem')) },
@@ -312,6 +334,10 @@ function makeCertificates() {
     };
   } catch (error) {
     fs.rmSync(directory, { recursive: true, force: true });
+    if (Object.keys(publicCertificateText).length) {
+      throw new Error(`${error.message}; certificate diagnostics: ${JSON.stringify(diagnostics)}; ` +
+        `public certificate details: ${JSON.stringify(publicCertificateText)}`, {cause: error});
+    }
     throw error;
   }
 }

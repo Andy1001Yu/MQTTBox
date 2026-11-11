@@ -85,3 +85,5 @@ ELECTRON_RUN_AS_NODE=1 MQTTBOX_TEST_BUILD_DIR="$PWD/dist/mac-arm64/MQTTBox.app/C
 首轮原生macOS15 CI中，arm64为68/71、Intel为63/71，零告警审计均通过。保留[arm64失败](logs/security/20-ci-first-arm64-failures.log)、[Intel失败](logs/security/20-ci-first-x64-failures.log)。随后独立OpenSSL严格校验证实测试CA缺少KeyUsage，LibreSSL链还缺SKI/AKI；补齐后server/client严格校验均通过（[red](logs/security/24-tls-ca-strict-red.log)、[green](logs/security/25-tls-ca-strict-green.log)），没有关闭生产TLS校验。
 
 CI改为测试文件串行执行，取消测试先确认真实ACK被持有，再严格测量原生产2秒总超时与最多1.2秒终止余量；10实例保留5000条精确送达/归档，使用产品默认30秒超时和父35秒上界，不把请求的1.5秒发送节奏当作硬件性能断言。隔离Node24.22.2本地完整71/71通过：[日志](logs/security/27-node24-full-regression.log)。这轮只改测试/工作流，生产源码、依赖与已上传安装包保持一致；原生CI复核结果见Actions。
+
+测试证书最终使用fixture私有openssl.cnf，CA扩展只定义一次，不再把-addext追加到系统默认v3_ca。已识别的兼容机制见[OpenSSL上游问题14457](https://github.com/openssl/openssl/issues/14457)。原生产TLS验证和安装包未改；最终本地必要回归仍为71/71（[日志](logs/security/34-final-necessary-regression.log)）。临时深度诊断工作流已移除，仅保留正常双架构构建工作流；历史失败证据未删除。

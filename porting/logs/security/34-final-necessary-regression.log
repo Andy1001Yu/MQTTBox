@@ -1,0 +1,88 @@
+✔ ten concurrent child load workers publish and archive 500 QoS 1 messages each (1822.065208ms)
+ℹ All 5000 messages and archives completed in 1794.7ms; configured overall worker deadline=30s
+✔ username and password authenticate the connection worker before message delivery (11.094875ms)
+✔ an incorrect broker password emits a connection error without authorizing a session (1.395125ms)
+✔ MQTT 3.1 connects with MQIsdp and exchanges QoS 2 messages (2.50025ms)
+✔ abrupt worker process termination publishes and retains its configured last will (64.401625ms)
+✔ the connection worker reconnects and restores wildcard delivery after socket loss (55.774667ms)
+✔ stop ends a QoS 1 load while the broker withholds PUBACK (138.485041ms)
+ℹ ACK held after 26ms; stop completed after 28ms from CONNECTING
+✔ timeout ends a QoS 1 load while the broker withholds PUBACK (2105.71075ms)
+ℹ ACK held after 12ms; timeout completed after 2003ms from CONNECTING
+✔ stop ends a QoS 2 load while the broker withholds PUBCOMP (118.896416ms)
+ℹ ACK held after 13ms; stop completed after 14ms from CONNECTING
+✔ timeout ends a QoS 2 load while the broker withholds PUBCOMP (2106.574ms)
+ℹ ACK held after 14ms; timeout completed after 2002ms from CONNECTING
+✔ publish load counts 32 real broker messages at numeric QoS 0 (246.926208ms)
+✔ publish load counts 32 real broker messages at numeric QoS 1 (222.398708ms)
+✔ publish load counts 32 real broker messages at numeric QoS 2 (215.380208ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 0 (11.443166ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 1 (11.544459ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 2 (19.389458ms)
+✔ publish load accepts the UI's string QoS '1' (131.789167ms)
+✔ subscribe load accepts the UI's string QoS '1' (77.751125ms)
+✔ publish load accepts the UI's string QoS '2' (133.33125ms)
+✔ subscribe load accepts the UI's string QoS '2' (74.272791ms)
+✔ stopping a running publish load reports partial real counts and ends once (156.636125ms)
+✔ an empty subscribe load times out with zero counts and no completion status (192.658792ms)
+✔ load worker delivers a large complete archive over child IPC before exiting (82.063625ms)
+TLS chain diagnostics before strict verification: {"node":"24.22.2","opensslLibrary":"3.5.9","opensslCommand":"OpenSSL 3.6.2 7 Apr 2026 (Library: OpenSSL 3.6.2 7 Apr 2026)","configuration":"fixture-owned extension sections","ca":{"type":"string","bytes":1107,"fingerprint256":"BB:10:20:39:0E:A4:2C:00:D5:76:6F:B4:EA:9E:A4:76:4A:68:E7:C3:F3:CB:79:31:00:73:B9:1A:45:02:19:E7","subject":"CN=MQTTBox Test CA","issuer":"CN=MQTTBox Test CA","validFrom":"Nov 11 11:23:28 2026 GMT","validTo":"Nov 13 11:23:28 2026 GMT","subjectKeyIdentifiers":["00:5F:69:8D:FD:7E:AD:02:9A:DE:E5:F0:D9:16:8B:A3:8F:DA:9B:08"],"authorityKeyIdentifiers":[],"basicConstraints":["critical\n                CA:TRUE"],"issuedByCA":true,"signatureVerifiedByCA":true},"server":{"type":"Buffer","bytes":1180,"fingerprint256":"7B:A3:E5:70:D4:F9:4E:B4:B1:D0:71:12:63:41:F6:AA:6E:DD:EC:7D:8D:A9:8E:41:54:89:FB:4D:99:8C:BB:BB","subject":"CN=localhost","issuer":"CN=MQTTBox Test CA","subjectAltName":"DNS:localhost, IP Address:127.0.0.1","validFrom":"Nov 11 11:23:28 2026 GMT","validTo":"Nov 13 11:23:28 2026 GMT","subjectKeyIdentifiers":["BC:58:07:30:03:A2:1F:84:35:0D:A1:03:C8:87:A5:BF:BF:DB:1C:67"],"authorityKeyIdentifiers":["00:5F:69:8D:FD:7E:AD:02:9A:DE:E5:F0:D9:16:8B:A3:8F:DA:9B:08"],"basicConstraints":["CA:FALSE"],"issuedByCA":true,"signatureVerifiedByCA":true},"client":{"type":"string","bytes":1147,"fingerprint256":"2A:35:22:6E:0F:F8:AE:A6:31:0F:15:DC:F1:58:D8:89:64:1A:62:DA:84:3D:4A:5F:4A:5C:93:7A:F0:53:53:1A","subject":"CN=mqttbox-client","issuer":"CN=MQTTBox Test CA","validFrom":"Nov 11 11:23:28 2026 GMT","validTo":"Nov 13 11:23:28 2026 GMT","subjectKeyIdentifiers":["8A:FA:8B:11:B8:1D:19:F4:1A:5B:53:78:14:14:76:7E:C9:15:04:18"],"authorityKeyIdentifiers":["00:5F:69:8D:FD:7E:AD:02:9A:DE:E5:F0:D9:16:8B:A3:8F:DA:9B:08"],"basicConstraints":["CA:FALSE"],"issuedByCA":true,"signatureVerifiedByCA":true}}
+TLS fixture diagnostics: {"node":"24.22.2","opensslLibrary":"3.5.9","opensslCommand":"OpenSSL 3.6.2 7 Apr 2026 (Library: OpenSSL 3.6.2 7 Apr 2026)","configuration":"fixture-owned extension sections","ca":{"type":"string","bytes":1107,"fingerprint256":"BB:10:20:39:0E:A4:2C:00:D5:76:6F:B4:EA:9E:A4:76:4A:68:E7:C3:F3:CB:79:31:00:73:B9:1A:45:02:19:E7","subject":"CN=MQTTBox Test CA","issuer":"CN=MQTTBox Test CA","validFrom":"Nov 11 11:23:28 2026 GMT","validTo":"Nov 13 11:23:28 2026 GMT","subjectKeyIdentifiers":["00:5F:69:8D:FD:7E:AD:02:9A:DE:E5:F0:D9:16:8B:A3:8F:DA:9B:08"],"authorityKeyIdentifiers":[],"basicConstraints":["critical\n                CA:TRUE"],"issuedByCA":true,"signatureVerifiedByCA":true},"server":{"type":"Buffer","bytes":1180,"fingerprint256":"7B:A3:E5:70:D4:F9:4E:B4:B1:D0:71:12:63:41:F6:AA:6E:DD:EC:7D:8D:A9:8E:41:54:89:FB:4D:99:8C:BB:BB","subject":"CN=localhost","issuer":"CN=MQTTBox Test CA","subjectAltName":"DNS:localhost, IP Address:127.0.0.1","validFrom":"Nov 11 11:23:28 2026 GMT","validTo":"Nov 13 11:23:28 2026 GMT","subjectKeyIdentifiers":["BC:58:07:30:03:A2:1F:84:35:0D:A1:03:C8:87:A5:BF:BF:DB:1C:67"],"authorityKeyIdentifiers":["00:5F:69:8D:FD:7E:AD:02:9A:DE:E5:F0:D9:16:8B:A3:8F:DA:9B:08"],"basicConstraints":["CA:FALSE"],"issuedByCA":true,"signatureVerifiedByCA":true},"client":{"type":"string","bytes":1147,"fingerprint256":"2A:35:22:6E:0F:F8:AE:A6:31:0F:15:DC:F1:58:D8:89:64:1A:62:DA:84:3D:4A:5F:4A:5C:93:7A:F0:53:53:1A","subject":"CN=mqttbox-client","issuer":"CN=MQTTBox Test CA","validFrom":"Nov 11 11:23:28 2026 GMT","validTo":"Nov 13 11:23:28 2026 GMT","subjectKeyIdentifiers":["8A:FA:8B:11:B8:1D:19:F4:1A:5B:53:78:14:14:76:7E:C9:15:04:18"],"authorityKeyIdentifiers":["00:5F:69:8D:FD:7E:AD:02:9A:DE:E5:F0:D9:16:8B:A3:8F:DA:9B:08"],"basicConstraints":["CA:FALSE"],"issuedByCA":true,"signatureVerifiedByCA":true},"strictVerification":"passed"}
+✔ TLS custom CA validates the local broker certificate (33.254167ms)
+✔ TLS client-certificate mode authenticates the supplied key and certificate (8.803541ms)
+✔ CA-signed mode rejects an untrusted server certificate over mqtts (5.289917ms)
+✔ CA-signed mode rejects an untrusted server certificate over wss (19.491583ms)
+✔ custom CA mode rejects a broker signed by a different authority (3.558625ms)
+✔ WebSocket transport exchanges MQTT messages on a URL path (5.709917ms)
+✔ secure WebSocket transport honors the configured CA (8.235958ms)
+✔ connection worker delivers QoS 0 and completes its protocol acknowledgement (34.186042ms)
+✔ connection worker delivers QoS 1 and completes its protocol acknowledgement (6.077417ms)
+✔ connection worker delivers QoS 2 and completes its protocol acknowledgement (3.570083ms)
+✔ wildcard subscriptions preserve the matching filter and unsubscribe removes delivery (87.032208ms)
+✔ a new subscription receives retained payload and its retained flag (3.538417ms)
+✔ connection worker exchanges messages and disconnects through real child IPC (88.0865ms)
+✔ release check sends an anonymous, bounded HTTPS GET with redirects and credentials disabled (20.215959ms)
+▶ release notifications follow semantic version and prerelease precedence
+  ✔ v0.2.2-macos.2 compared with 0.2.2-macos.1 (0.440834ms)
+  ✔ v0.2.2-macos.10 compared with 0.2.2-macos.2 (0.316125ms)
+  ✔ v0.2.2 compared with 0.2.2-macos.1 (0.311084ms)
+  ✔ v0.2.2+build-1 compared with 0.2.2-macos.1 (0.292417ms)
+  ✔ v0.2.2-macos.1+different-build compared with 0.2.2-macos.1 (0.297125ms)
+  ✔ v0.2.2-macos.1 compared with 0.2.2-macos.1 (0.288792ms)
+  ✔ v0.2.2-macos.0 compared with 0.2.2-macos.1 (0.987875ms)
+  ✔ v0.2.1 compared with 0.2.2-macos.1 (0.93425ms)
+  ✔ v1.0.0 compared with 2.0.0 (0.737458ms)
+  ✔ v2.0.0 compared with 1.0.0 (0.544875ms)
+✔ release notifications follow semantic version and prerelease precedence (5.834ms)
+▶ unavailable, redirected, or malformed release responses never notify or escape init
+  ✔ network failure (0.711792ms)
+  ✔ timeout (0.505333ms)
+  ✔ missing release (0.398083ms)
+  ✔ rate limit (0.394292ms)
+  ✔ unexpected status (0.399167ms)
+  ✔ unexpected response URL (0.385667ms)
+  ✔ HTML response (0.405583ms)
+  ✔ invalid JSON (0.418667ms)
+  ✔ null JSON (0.411042ms)
+  ✔ array JSON (0.408458ms)
+  ✔ missing tag (0.3875ms)
+  ✔ object tag (0.4505ms)
+  ✔ script tag (0.437875ms)
+  ✔ newline in tag (0.3785ms)
+  ✔ partial version (0.296084ms)
+  ✔ wildcard version (0.291042ms)
+  ✔ leading zero (0.271584ms)
+  ✔ leading prerelease zero (0.256084ms)
+  ✔ huge tag (0.245416ms)
+  ✔ draft release (0.229625ms)
+✔ unavailable, redirected, or malformed release responses never notify or escape init (9.32ms)
+✔ external links open only HTTP and HTTPS URLs (0.389375ms)
+✔ displayed version follows the application manifest (0.5545ms)
+ℹ tests 71
+ℹ suites 0
+ℹ pass 71
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9111.250958

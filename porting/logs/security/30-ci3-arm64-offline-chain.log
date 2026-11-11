@@ -1,0 +1,184 @@
+✖ failing tests:
+2026-11-11T11:10:13.3234580Z
+2026-11-11T11:10:13.3235360Z test at test/mqtt-tls.test.cjs:57:1
+2026-11-11T11:10:13.3236870Z ✖ TLS custom CA validates the local broker certificate (0.350875ms)
+2026-11-11T11:10:13.3240770Z   Error: Command failed: openssl verify -x509_strict -CAfile ca.pem server.pem client.pem
+2026-11-11T11:10:13.3242480Z   CN = localhost
+2026-11-11T11:10:13.3243670Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3245060Z   CN = mqttbox-client
+2026-11-11T11:10:13.3246480Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3248440Z
+2026-11-11T11:10:13.3249660Z       at genericNodeError (node:internal/errors:986:15)
+2026-11-11T11:10:13.3250710Z       at wrappedFn (node:internal/errors:540:14)
+2026-11-11T11:10:13.3251920Z       at checkExecSyncError (node:child_process:943:11)
+2026-11-11T11:10:13.3300140Z       at execFileSync (node:child_process:979:15)
+2026-11-11T11:10:13.3302820Z       at openssl (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:283:12)
+2026-11-11T11:10:13.3304890Z       at makeCertificates (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:298:5)
+2026-11-11T11:10:13.3306920Z       at TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:11:18)
+2026-11-11T11:10:13.3307630Z       at TestHook.runInAsyncScope (node:async_hooks:227:14)
+2026-11-11T11:10:13.3308330Z       at TestHook.run (node:internal/test_runner/test:1402:25)
+2026-11-11T11:10:13.3321950Z       at TestHook.run (node:internal/test_runner/test:1757:18) {
+2026-11-11T11:10:13.3322530Z     status: 2,
+2026-11-11T11:10:13.3322750Z     signal: null,
+2026-11-11T11:10:13.3325680Z     output: [ null, <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>, <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes> ],
+2026-11-11T11:10:13.3327020Z     pid: 1412,
+2026-11-11T11:10:13.3368920Z     stdout: <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>,
+2026-11-11T11:10:13.3372560Z     stderr: <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes>
+2026-11-11T11:10:13.3374880Z   }
+2026-11-11T11:10:13.3375090Z
+2026-11-11T11:10:13.3376710Z test at test/mqtt-tls.test.cjs:64:1
+2026-11-11T11:10:13.3379330Z ✖ TLS client-certificate mode authenticates the supplied key and certificate (0.046ms)
+2026-11-11T11:10:13.3380670Z   Error: Command failed: openssl verify -x509_strict -CAfile ca.pem server.pem client.pem
+2026-11-11T11:10:13.3382660Z   CN = localhost
+2026-11-11T11:10:13.3383000Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3384250Z   CN = mqttbox-client
+2026-11-11T11:10:13.3384720Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3385090Z
+2026-11-11T11:10:13.3385320Z       at genericNodeError (node:internal/errors:986:15)
+2026-11-11T11:10:13.3385640Z       at wrappedFn (node:internal/errors:540:14)
+2026-11-11T11:10:13.3387150Z       at checkExecSyncError (node:child_process:943:11)
+2026-11-11T11:10:13.3387590Z       at execFileSync (node:child_process:979:15)
+2026-11-11T11:10:13.3388140Z       at openssl (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:283:12)
+2026-11-11T11:10:13.3388910Z       at makeCertificates (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:298:5)
+2026-11-11T11:10:13.3389630Z       at TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:11:18)
+2026-11-11T11:10:13.3390260Z       at TestHook.runInAsyncScope (node:async_hooks:227:14)
+2026-11-11T11:10:13.3390690Z       at TestHook.run (node:internal/test_runner/test:1402:25)
+2026-11-11T11:10:13.3391130Z       at TestHook.run (node:internal/test_runner/test:1757:18) {
+2026-11-11T11:10:13.3391460Z     status: 2,
+2026-11-11T11:10:13.3391630Z     signal: null,
+2026-11-11T11:10:13.3392760Z     output: [ null, <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>, <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes> ],
+2026-11-11T11:10:13.3393570Z     pid: 1412,
+2026-11-11T11:10:13.3394110Z     stdout: <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>,
+2026-11-11T11:10:13.3395100Z     stderr: <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes>
+2026-11-11T11:10:13.3395700Z   }
+2026-11-11T11:10:13.3395840Z
+2026-11-11T11:10:13.3395980Z test at test/mqtt-tls.test.cjs:77:3
+2026-11-11T11:10:13.3396600Z ✖ CA-signed mode rejects an untrusted server certificate over mqtts (0.031833ms)
+2026-11-11T11:10:13.3397160Z   Error: Command failed: openssl verify -x509_strict -CAfile ca.pem server.pem client.pem
+2026-11-11T11:10:13.3397560Z   CN = localhost
+2026-11-11T11:10:13.3397920Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3398290Z   CN = mqttbox-client
+2026-11-11T11:10:13.3398700Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3399000Z
+2026-11-11T11:10:13.3399310Z       at genericNodeError (node:internal/errors:986:15)
+2026-11-11T11:10:13.3399750Z       at wrappedFn (node:internal/errors:540:14)
+2026-11-11T11:10:13.3400190Z       at checkExecSyncError (node:child_process:943:11)
+2026-11-11T11:10:13.3400600Z       at execFileSync (node:child_process:979:15)
+2026-11-11T11:10:13.3401110Z       at openssl (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:283:12)
+2026-11-11T11:10:13.3401830Z       at makeCertificates (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:298:5)
+2026-11-11T11:10:13.3402840Z       at TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:11:18)
+2026-11-11T11:10:13.3403400Z       at TestHook.runInAsyncScope (node:async_hooks:227:14)
+2026-11-11T11:10:13.3404840Z       at TestHook.run (node:internal/test_runner/test:1402:25)
+2026-11-11T11:10:13.3405220Z       at TestHook.run (node:internal/test_runner/test:1757:18) {
+2026-11-11T11:10:13.3405640Z     status: 2,
+2026-11-11T11:10:13.3405860Z     signal: null,
+2026-11-11T11:10:13.3407020Z     output: [ null, <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>, <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes> ],
+2026-11-11T11:10:13.3407800Z     pid: 1412,
+2026-11-11T11:10:13.3408410Z     stdout: <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>,
+2026-11-11T11:10:13.3409380Z     stderr: <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes>
+2026-11-11T11:10:13.3409870Z   }
+2026-11-11T11:10:13.3409960Z
+2026-11-11T11:10:13.3410150Z test at test/mqtt-tls.test.cjs:77:3
+2026-11-11T11:10:13.3410830Z ✖ CA-signed mode rejects an untrusted server certificate over wss (0.028333ms)
+2026-11-11T11:10:13.3411450Z   Error: Command failed: openssl verify -x509_strict -CAfile ca.pem server.pem client.pem
+2026-11-11T11:10:13.3411930Z   CN = localhost
+2026-11-11T11:10:13.3412280Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3412730Z   CN = mqttbox-client
+2026-11-11T11:10:13.3413140Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3413480Z
+2026-11-11T11:10:13.3413780Z       at genericNodeError (node:internal/errors:986:15)
+2026-11-11T11:10:13.3414220Z       at wrappedFn (node:internal/errors:540:14)
+2026-11-11T11:10:13.3414570Z       at checkExecSyncError (node:child_process:943:11)
+2026-11-11T11:10:13.3414890Z       at execFileSync (node:child_process:979:15)
+2026-11-11T11:10:13.3415420Z       at openssl (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:283:12)
+2026-11-11T11:10:13.3416170Z       at makeCertificates (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:298:5)
+2026-11-11T11:10:13.3416930Z       at TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:11:18)
+2026-11-11T11:10:13.3417480Z       at TestHook.runInAsyncScope (node:async_hooks:227:14)
+2026-11-11T11:10:13.3417970Z       at TestHook.run (node:internal/test_runner/test:1402:25)
+2026-11-11T11:10:13.3418350Z       at TestHook.run (node:internal/test_runner/test:1757:18) {
+2026-11-11T11:10:13.3418670Z     status: 2,
+2026-11-11T11:10:13.3418950Z     signal: null,
+2026-11-11T11:10:13.3420000Z     output: [ null, <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>, <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes> ],
+2026-11-11T11:10:13.3420790Z     pid: 1412,
+2026-11-11T11:10:13.3421460Z     stdout: <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>,
+2026-11-11T11:10:13.3422530Z     stderr: <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes>
+2026-11-11T11:10:13.3423140Z   }
+2026-11-11T11:10:13.3423330Z
+2026-11-11T11:10:13.3423520Z test at test/mqtt-tls.test.cjs:98:1
+2026-11-11T11:10:13.3424250Z ✖ custom CA mode rejects a broker signed by a different authority (0.037666ms)
+2026-11-11T11:10:13.3425350Z   Error: Command failed: openssl verify -x509_strict -CAfile ca.pem server.pem client.pem
+2026-11-11T11:10:13.3425990Z   CN = localhost
+2026-11-11T11:10:13.3426340Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3426640Z   CN = mqttbox-client
+2026-11-11T11:10:13.3426920Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3427180Z
+2026-11-11T11:10:13.3427500Z       at genericNodeError (node:internal/errors:986:15)
+2026-11-11T11:10:13.3427910Z       at wrappedFn (node:internal/errors:540:14)
+2026-11-11T11:10:13.3428230Z       at checkExecSyncError (node:child_process:943:11)
+2026-11-11T11:10:13.3428620Z       at execFileSync (node:child_process:979:15)
+2026-11-11T11:10:13.3429050Z       at openssl (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:283:12)
+2026-11-11T11:10:13.3429630Z       at makeCertificates (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:298:5)
+2026-11-11T11:10:13.3430270Z       at TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:11:18)
+2026-11-11T11:10:13.3430720Z       at TestHook.runInAsyncScope (node:async_hooks:227:14)
+2026-11-11T11:10:13.3431080Z       at TestHook.run (node:internal/test_runner/test:1402:25)
+2026-11-11T11:10:13.3431460Z       at TestHook.run (node:internal/test_runner/test:1757:18) {
+2026-11-11T11:10:13.3431750Z     status: 2,
+2026-11-11T11:10:13.3432010Z     signal: null,
+2026-11-11T11:10:13.3433010Z     output: [ null, <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>, <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes> ],
+2026-11-11T11:10:13.3433800Z     pid: 1412,
+2026-11-11T11:10:13.3434350Z     stdout: <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>,
+2026-11-11T11:10:13.3435200Z     stderr: <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes>
+2026-11-11T11:10:13.3435660Z   }
+2026-11-11T11:10:13.3435740Z
+2026-11-11T11:10:13.3435870Z test at test/mqtt-tls.test.cjs:113:1
+2026-11-11T11:10:13.3436400Z ✖ WebSocket transport exchanges MQTT messages on a URL path (0.039042ms)
+2026-11-11T11:10:13.3436910Z   Error: Command failed: openssl verify -x509_strict -CAfile ca.pem server.pem client.pem
+2026-11-11T11:10:13.3437270Z   CN = localhost
+2026-11-11T11:10:13.3437550Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3437830Z   CN = mqttbox-client
+2026-11-11T11:10:13.3438110Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3438400Z
+2026-11-11T11:10:13.3438650Z       at genericNodeError (node:internal/errors:986:15)
+2026-11-11T11:10:13.3439010Z       at wrappedFn (node:internal/errors:540:14)
+2026-11-11T11:10:13.3439360Z       at checkExecSyncError (node:child_process:943:11)
+2026-11-11T11:10:13.3439740Z       at execFileSync (node:child_process:979:15)
+2026-11-11T11:10:13.3440190Z       at openssl (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:283:12)
+2026-11-11T11:10:13.3440770Z       at makeCertificates (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:298:5)
+2026-11-11T11:10:13.3441380Z       at TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:11:18)
+2026-11-11T11:10:13.3441840Z       at TestHook.runInAsyncScope (node:async_hooks:227:14)
+2026-11-11T11:10:13.3442260Z       at TestHook.run (node:internal/test_runner/test:1402:25)
+2026-11-11T11:10:13.3442700Z       at TestHook.run (node:internal/test_runner/test:1757:18) {
+2026-11-11T11:10:13.3442990Z     status: 2,
+2026-11-11T11:10:13.3443620Z     signal: null,
+2026-11-11T11:10:13.3444880Z     output: [ null, <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>, <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes> ],
+2026-11-11T11:10:13.3445760Z     pid: 1412,
+2026-11-11T11:10:13.3446370Z     stdout: <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>,
+2026-11-11T11:10:13.3447350Z     stderr: <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes>
+2026-11-11T11:10:13.3447840Z   }
+2026-11-11T11:10:13.3447930Z
+2026-11-11T11:10:13.3448080Z test at test/mqtt-tls.test.cjs:118:1
+2026-11-11T11:10:13.3448580Z ✖ secure WebSocket transport honors the configured CA (0.026667ms)
+2026-11-11T11:10:13.3449090Z   Error: Command failed: openssl verify -x509_strict -CAfile ca.pem server.pem client.pem
+2026-11-11T11:10:13.3449430Z   CN = localhost
+2026-11-11T11:10:13.3449720Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3450040Z   CN = mqttbox-client
+2026-11-11T11:10:13.3450340Z   error 20 at 0 depth lookup: unable to get local issuer certificate
+2026-11-11T11:10:13.3450610Z
+2026-11-11T11:10:13.3450830Z       at genericNodeError (node:internal/errors:986:15)
+2026-11-11T11:10:13.3451140Z       at wrappedFn (node:internal/errors:540:14)
+2026-11-11T11:10:13.3451480Z       at checkExecSyncError (node:child_process:943:11)
+2026-11-11T11:10:13.3452890Z       at execFileSync (node:child_process:979:15)
+2026-11-11T11:10:13.3454410Z       at openssl (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:283:12)
+2026-11-11T11:10:13.3456130Z       at makeCertificates (/Users/runner/work/MQTTBox/MQTTBox/test/helpers/mqtt-harness.cjs:298:5)
+2026-11-11T11:10:13.3457770Z       at TestContext.<anonymous> (/Users/runner/work/MQTTBox/MQTTBox/test/mqtt-tls.test.cjs:11:18)
+2026-11-11T11:10:13.3459050Z       at TestHook.runInAsyncScope (node:async_hooks:227:14)
+2026-11-11T11:10:13.3460040Z       at TestHook.run (node:internal/test_runner/test:1402:25)
+2026-11-11T11:10:13.3461000Z       at TestHook.run (node:internal/test_runner/test:1757:18) {
+2026-11-11T11:10:13.3461760Z     status: 2,
+2026-11-11T11:10:13.3462230Z     signal: null,
+2026-11-11T11:10:13.3464940Z     output: [ null, <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>, <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes> ],
+2026-11-11T11:10:13.3467060Z     pid: 1412,
+2026-11-11T11:10:13.3468740Z     stdout: <Buffer 65 72 72 6f 72 20 73 65 72 76 65 72 2e 70 65 6d 3a 20 76 65 72 69 66 69 63 61 74 69 6f 6e 20 66 61 69 6c 65 64 0a 65 72 72 6f 72 20 63 6c 69 65 6e 74 ... 26 more bytes>,
+2026-11-11T11:10:13.3469710Z     stderr: <Buffer 43 4e 20 3d 20 6c 6f 63 61 6c 68 6f 73 74 0a 65 72 72 6f 72 20 32 30 20 61 74 20 30 20 64 65 70 74 68 20 6c 6f 6f 6b 75 70 3a 20 75 6e 61 62 6c 65 20 ... 119 more bytes>
+2026-11-11T11:10:13.3470180Z   }
+2026-11-11T11:10:13.3481210Z
