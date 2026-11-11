@@ -79,3 +79,9 @@ ELECTRON_RUN_AS_NODE=1 MQTTBOX_TEST_BUILD_DIR="$PWD/dist/mac-arm64/MQTTBox.app/C
 ## GitHub交付
 
 目标：[Andy1001Yu/MQTTBox](https://github.com/Andy1001Yu/MQTTBox)，分支macos-modern，Release标签v0.2.2-macos.1。源代码保留上游历史，安装包附SHA256清单；具体发布状态在最终交付时核对。发布前日志中的本机用户名/私人目录已脱敏，原始日志仅留本地git忽略目录。
+
+## CI可移植性修正
+
+首轮原生macOS15 CI中，arm64为68/71、Intel为63/71，零告警审计均通过。保留[arm64失败](logs/security/20-ci-first-arm64-failures.log)、[Intel失败](logs/security/20-ci-first-x64-failures.log)。随后独立OpenSSL严格校验证实测试CA缺少KeyUsage，LibreSSL链还缺SKI/AKI；补齐后server/client严格校验均通过（[red](logs/security/24-tls-ca-strict-red.log)、[green](logs/security/25-tls-ca-strict-green.log)），没有关闭生产TLS校验。
+
+CI改为测试文件串行执行，取消测试先确认真实ACK被持有，再严格测量原生产2秒总超时与最多1.2秒终止余量；10实例保留5000条精确送达/归档，使用产品默认30秒超时和父35秒上界，不把请求的1.5秒发送节奏当作硬件性能断言。隔离Node24.22.2本地完整71/71通过：[日志](logs/security/27-node24-full-regression.log)。这轮只改测试/工作流，生产源码、依赖与已上传安装包保持一致；原生CI复核结果见Actions。

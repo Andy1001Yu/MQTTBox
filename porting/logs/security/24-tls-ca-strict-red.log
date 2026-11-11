@@ -1,0 +1,25 @@
+Generator: OpenSSL 3.6.2 7 Apr 2026 (Library: OpenSSL 3.6.2 7 Apr 2026)
+Strict verification exit: 2
+CN=MQTTBox Test CA
+error 92 at 1 depth lookup: CA cert does not include key usage extension
+error server.pem: verification failed
+CN=MQTTBox Test CA
+error 92 at 1 depth lookup: CA cert does not include key usage extension
+error client.pem: verification failed
+
+Generator: LibreSSL 3.3.6
+Strict verification exit: 2
+CN=localhost
+error 85 at 0 depth lookup: Missing Authority Key Identifier
+CN=MQTTBox Test CA
+error 92 at 1 depth lookup: CA cert does not include key usage extension
+CN=MQTTBox Test CA
+error 86 at 1 depth lookup: Missing Subject Key Identifier
+error server.pem: verification failed
+CN=mqttbox-client
+error 85 at 0 depth lookup: Missing Authority Key Identifier
+CN=MQTTBox Test CA
+error 92 at 1 depth lookup: CA cert does not include key usage extension
+CN=MQTTBox Test CA
+error 86 at 1 depth lookup: Missing Subject Key Identifier
+error client.pem: verification failed

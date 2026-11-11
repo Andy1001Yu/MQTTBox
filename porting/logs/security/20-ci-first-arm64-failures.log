@@ -1,0 +1,25 @@
+2026-11-11T10:29:19.2107560Z Image: macos-15-arm64
+2026-11-11T10:29:23.3601350Z node: v24.22.2
+2026-11-11T10:29:23.3603360Z npm: 11.19.1
+2026-11-11T10:29:37.9887170Z ✔ an incorrect broker password emits a connection error without authorizing a session (1.8405ms)
+2026-11-11T10:29:43.7807610Z ✖ TLS custom CA validates the local broker certificate (5022.778959ms)
+2026-11-11T10:29:48.7878640Z ✖ TLS client-certificate mode authenticates the supplied key and certificate (5004.457291ms)
+2026-11-11T10:29:53.8928430Z ✖ secure WebSocket transport honors the configured CA (5004.960542ms)
+2026-11-11T10:29:53.9106810Z   ✔ network failure (0.567416ms)
+2026-11-11T10:29:53.9115990Z ℹ tests 71
+2026-11-11T10:29:53.9116560Z ℹ pass 68
+2026-11-11T10:29:53.9116780Z ℹ fail 3
+2026-11-11T10:29:53.9118320Z ✖ failing tests:
+2026-11-11T10:29:53.9119330Z ✖ TLS custom CA validates the local broker certificate (5022.778959ms)
+2026-11-11T10:29:53.9120450Z   Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+2026-11-11T10:29:53.9122450Z       at listOnTimeout (node:internal/timers:685:17)
+2026-11-11T10:29:53.9122880Z       at process.processTimers (node:internal/timers:618:7)
+2026-11-11T10:29:53.9124100Z ✖ TLS client-certificate mode authenticates the supplied key and certificate (5004.457291ms)
+2026-11-11T10:29:53.9124730Z   Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+2026-11-11T10:29:53.9125920Z       at listOnTimeout (node:internal/timers:685:17)
+2026-11-11T10:29:53.9126410Z       at process.processTimers (node:internal/timers:618:7)
+2026-11-11T10:29:53.9128650Z ✖ secure WebSocket transport honors the configured CA (5004.960542ms)
+2026-11-11T10:29:53.9129210Z   Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+2026-11-11T10:29:53.9131060Z       at listOnTimeout (node:internal/timers:685:17)
+2026-11-11T10:29:53.9131570Z       at process.processTimers (node:internal/timers:618:7)
+2026-11-11T10:29:53.9453230Z ##[error]Process completed with exit code 1.

@@ -11,7 +11,11 @@ after(() => { if (certificates) certificates.remove(); });
 
 async function roundTrip(t, server, overrides = {}) {
   const { worker } = observeWorker(t);
-  await connectWorker(worker, clientSettings(server, overrides));
+  try {
+    await connectWorker(worker, clientSettings(server, overrides));
+  } catch (error) {
+    throw new Error(`${error.message}; broker TLS errors: ${JSON.stringify(server.tlsErrors)}`, {cause: error});
+  }
   await subscribeWorker(worker, 'secure/roundtrip', '1');
   const received = clientEvent(worker, CLIENT.EVENT_MQTT_CLIENT_SUBSCRIBED_DATA_RECIEVED);
   const published = clientEvent(worker, CLIENT.EVENT_MQTT_CLIENT_PUBLISHED_MESSAGE);

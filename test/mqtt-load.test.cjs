@@ -7,7 +7,9 @@ const { LOAD, LoadWorker, startBroker, clientSettings, observeWorker, loadEvent,
 
 function loadSettings(server, overrides = {}) {
   return clientSettings(server, { loadTestType: 'publishing', msgCount: 32,
-    runTime: 0.16, timeOut: 3, topic: 'load/messages', qos: 1,
+    // Functional delivery checks include cold connection setup and scheduler
+    // delays; the requested publish interval is not a throughput assertion.
+    runTime: 0.16, timeOut: 10, connectTimeout: 5000, topic: 'load/messages', qos: 1,
     payload: ['alpha', '中文-beta', 'gamma'], ...overrides });
 }
 
@@ -26,8 +28,8 @@ for (const qos of [0, 1, 2]) {
     const server = await startBroker(t);
     const { worker, events } = observeWorker(t, LoadWorker);
     const settings = loadSettings(server, { qos });
-    const completed = loadEvent(worker, LOAD.EVENT_MQTT_LOAD_TEST_ENDED);
-    const receivedAll = waitFor(server.broker, 'publish', () => server.packets.length === 32)
+    const completed = loadEvent(worker, LOAD.EVENT_MQTT_LOAD_TEST_ENDED, () => true, 12000);
+    const receivedAll = waitFor(server.broker, 'publish', () => server.packets.length === 32, 12000)
       .catch(error => { throw new Error(`${error.message}: broker received ${server.packets.length}/32 requested messages`); });
     startLoad(worker, settings);
     const [result] = await Promise.all([completed, receivedAll]);
@@ -58,7 +60,7 @@ for (const qos of [0, 1, 2]) {
       data => data.statusObj.message === LOAD.LOAD_MQTT_CLIENT_SUBSCRIBED);
     startLoad(worker, settings);
     await subscribed;
-    const completed = loadEvent(worker, LOAD.EVENT_MQTT_LOAD_TEST_ENDED);
+    const completed = loadEvent(worker, LOAD.EVENT_MQTT_LOAD_TEST_ENDED, () => true, 12000);
     for (let index = 0; index < 32; index++) {
       await publish(publisher, 'incoming/data', `message-${index}`, { qos });
     }
@@ -80,7 +82,7 @@ for (const qos of ['1', '2']) {
     const server = await startBroker(t);
     const service = forkWorker(t, 'PlatformMqttLoadWorkerService');
     const settings = loadSettings(server, { qos, msgCount: 12, runTime: 0.06 });
-    const completed = service.event(LOAD.EVENT_MQTT_LOAD_TEST_ENDED);
+    const completed = service.event(LOAD.EVENT_MQTT_LOAD_TEST_ENDED, () => true, 12000);
     service.child.send({ actionType: LOAD.ACTION_START_MQTT_LOAD_TEST,
       data: { loadObj: settings, iId: 'string-qos-publish', inum: 1 } });
     const result = await completed;
@@ -103,7 +105,7 @@ for (const qos of ['1', '2']) {
     service.child.send({ actionType: LOAD.ACTION_START_MQTT_LOAD_TEST,
       data: { loadObj: settings, iId: 'string-qos-subscribe', inum: 1 } });
     await subscribed;
-    const completed = service.event(LOAD.EVENT_MQTT_LOAD_TEST_ENDED);
+    const completed = service.event(LOAD.EVENT_MQTT_LOAD_TEST_ENDED, () => true, 12000);
     for (let index = 0; index < 12; index++) {
       await publish(publisher, 'string-qos/input', `string-${index}`, { qos: Number(qos) });
     }

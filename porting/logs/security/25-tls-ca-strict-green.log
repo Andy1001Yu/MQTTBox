@@ -1,0 +1,9 @@
+Generator: OpenSSL 3.6.2 7 Apr 2026 (Library: OpenSSL 3.6.2 7 Apr 2026)
+Strict verification exit: 0
+server.pem: OK
+client.pem: OK
+
+Generator: LibreSSL 3.3.6
+Strict verification exit: 0
+server.pem: OK
+client.pem: OK

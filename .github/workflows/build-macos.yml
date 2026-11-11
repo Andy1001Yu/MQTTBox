@@ -28,13 +28,16 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
+      - name: Remove local evidence images before producing CI screenshots
+        run: rm -f porting/screenshots/*.png
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: '24'
           cache: npm
       - run: npm ci --no-audit
       - run: npm audit --audit-level=low
-      - run: npm test
+      - name: Run integration tests without competing test files
+        run: npm run build && node --test --test-concurrency=1 test/*.test.cjs
       - run: npm run test:electron
       - name: Build native macOS installer
         run: ./node_modules/.bin/electron-builder --mac dmg --${{ matrix.arch }} --publish never

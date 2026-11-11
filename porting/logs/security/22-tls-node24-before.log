@@ -1,0 +1,15 @@
+✔ TLS custom CA validates the local broker certificate (23.911375ms)
+✔ TLS client-certificate mode authenticates the supplied key and certificate (4.253625ms)
+✔ CA-signed mode rejects an untrusted server certificate over mqtts (2.338708ms)
+✔ CA-signed mode rejects an untrusted server certificate over wss (10.2525ms)
+✔ custom CA mode rejects a broker signed by a different authority (2.025334ms)
+✔ WebSocket transport exchanges MQTT messages on a URL path (4.269792ms)
+✔ secure WebSocket transport honors the configured CA (3.705417ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 232.725958

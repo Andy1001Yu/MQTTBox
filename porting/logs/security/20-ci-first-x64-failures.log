@@ -1,0 +1,51 @@
+2026-11-11T10:29:20.7327330Z Image: macos-15
+2026-11-11T10:29:31.9096950Z node: v24.19.0
+2026-11-11T10:29:31.9131420Z npm: 11.17.0
+2026-11-11T10:30:29.8815780Z ✖ ten concurrent child load workers publish and archive 500 QoS 1 messages each (15624.104647ms)
+2026-11-11T10:30:30.0729430Z ✔ an incorrect broker password emits a connection error without authorizing a session (4.288096ms)
+2026-11-11T10:30:34.5497290Z ✖ stop ends a QoS 1 load while the broker withholds PUBACK (5269.664672ms)
+2026-11-11T10:30:34.5583810Z ✖ timeout ends a QoS 1 load while the broker withholds PUBACK (5071.955678ms)
+2026-11-11T10:30:34.5654570Z ✖ timeout ends a QoS 2 load while the broker withholds PUBCOMP (5007.553809ms)
+2026-11-11T10:30:34.5670520Z ✖ publish load counts 32 real broker messages at numeric QoS 0 (5028.694935ms)
+2026-11-11T10:30:37.1053300Z ✖ TLS custom CA validates the local broker certificate (5027.929426ms)
+2026-11-11T10:30:42.1456440Z ✖ TLS client-certificate mode authenticates the supplied key and certificate (5027.289869ms)
+2026-11-11T10:30:47.3649190Z ✖ secure WebSocket transport honors the configured CA (5024.909639ms)
+2026-11-11T10:30:47.4924510Z   ✔ network failure (1.665958ms)
+2026-11-11T10:30:47.5221160Z ℹ tests 71
+2026-11-11T10:30:47.5249320Z ℹ pass 63
+2026-11-11T10:30:47.5263990Z ℹ fail 8
+2026-11-11T10:30:47.5426610Z ✖ failing tests:
+2026-11-11T10:30:47.5532260Z ✖ ten concurrent child load workers publish and archive 500 QoS 1 messages each (15624.104647ms)
+2026-11-11T10:30:47.5535990Z   AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2026-11-11T10:30:47.5615380Z       at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+2026-11-11T10:30:47.5617380Z       at async Test.run (node:internal/test_runner/test:1389:7)
+2026-11-11T10:30:47.5620310Z       at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+2026-11-11T10:30:47.5631600Z ✖ stop ends a QoS 1 load while the broker withholds PUBACK (5269.664672ms)
+2026-11-11T10:30:47.5633010Z   Error: Timed out waiting for acknowledgement-held
+2026-11-11T10:30:47.5637690Z       at listOnTimeout (node:internal/timers:635:17)
+2026-11-11T10:30:47.5638690Z       at process.processTimers (node:internal/timers:571:7)
+2026-11-11T10:30:47.5643910Z ✖ timeout ends a QoS 1 load while the broker withholds PUBACK (5071.955678ms)
+2026-11-11T10:30:47.5645530Z   Error: Timed out waiting for acknowledgement-held
+2026-11-11T10:30:47.5650150Z       at listOnTimeout (node:internal/timers:635:17)
+2026-11-11T10:30:47.5651890Z       at process.processTimers (node:internal/timers:571:7)
+2026-11-11T10:30:47.5655180Z ✖ timeout ends a QoS 2 load while the broker withholds PUBCOMP (5007.553809ms)
+2026-11-11T10:30:47.5657370Z   Error: Timed out waiting for acknowledgement-held
+2026-11-11T10:30:47.5663020Z       at listOnTimeout (node:internal/timers:635:17)
+2026-11-11T10:30:47.5665720Z       at process.processTimers (node:internal/timers:571:7)
+2026-11-11T10:30:47.5670160Z ✖ publish load counts 32 real broker messages at numeric QoS 0 (5028.694935ms)
+2026-11-11T10:30:47.5672100Z   Error: Timed out waiting for publish: broker received 0/32 requested messages
+2026-11-11T10:30:47.5679000Z       at async Test.run (node:internal/test_runner/test:1389:7)
+2026-11-11T10:30:47.5680750Z       at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+2026-11-11T10:30:47.5684210Z ✖ TLS custom CA validates the local broker certificate (5027.929426ms)
+2026-11-11T10:30:47.5685690Z   Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+2026-11-11T10:30:47.5690720Z       at listOnTimeout (node:internal/timers:635:17)
+2026-11-11T10:30:47.5692320Z       at process.processTimers (node:internal/timers:571:7)
+2026-11-11T10:30:47.5695750Z ✖ TLS client-certificate mode authenticates the supplied key and certificate (5027.289869ms)
+2026-11-11T10:30:47.5697470Z   Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+2026-11-11T10:30:47.5701410Z       at listOnTimeout (node:internal/timers:635:17)
+2026-11-11T10:30:47.5702750Z       at process.processTimers (node:internal/timers:571:7)
+2026-11-11T10:30:47.5706190Z ✖ secure WebSocket transport honors the configured CA (5024.909639ms)
+2026-11-11T10:30:47.5707660Z   Error: Timed out waiting for EVENT_WORKER_MQTT_CLIENT
+2026-11-11T10:30:47.5711500Z       at listOnTimeout (node:internal/timers:635:17)
+2026-11-11T10:30:47.5712860Z       at process.processTimers (node:internal/timers:571:7)
+2026-11-11T10:30:47.5753730Z ##[error]Process completed with exit code 1.

@@ -63,6 +63,7 @@ async function startBroker(t, options = {}) {
   const packets = [];
   const sockets = new Set();
   const acceptedTLS = [];
+  const tlsErrors = [];
   broker.on('publish', (packet, client) => {
     if (client) packets.push({ clientId: client.id, topic: packet.topic,
       payload: packet.payload.toString(), qos: packet.qos, retain: packet.retain });
@@ -89,7 +90,9 @@ async function startBroker(t, options = {}) {
   server.on('secureConnection', socket => {
     acceptedTLS.push({ authorized: socket.authorized, peer: socket.getPeerCertificate(), protocol: socket.getProtocol() });
   });
-  server.on('tlsClientError', () => {});
+  server.on('tlsClientError', error => {
+    tlsErrors.push({code: error.code, message: error.message});
+  });
   t.after(async () => {
     if (websocketServer) {
       for (const client of websocketServer.clients) client.terminate();
@@ -107,7 +110,7 @@ async function startBroker(t, options = {}) {
     });
   });
   const port = server.address().port;
-  return { broker, packets, acceptedTLS, protocol, port,
+  return { broker, packets, acceptedTLS, tlsErrors, protocol, port,
     host: `${protocol === 'mqtts' || protocol === 'wss' ? 'localhost' : '127.0.0.1'}:${port}${protocol === 'ws' || protocol === 'wss' ? '/mqtt' : ''}` };
 }
 
@@ -171,7 +174,28 @@ async function connectWorker(worker, settings) {
   const connected = clientEvent(worker, CLIENT.EVENT_MQTT_CLIENT_CONN_STATE_CHANGED,
     data => data.connState === CLIENT.CONNECTION_STATE_CONNECTED);
   worker.processAction({ actionType: CLIENT.ACTION_MQTT_CLIENT_CONNECT, data: settings });
-  await connected;
+  const errors = [];
+  const record = source => error => errors.push({source, code: error.code, message: error.message,
+    errors: error.errors && error.errors.map(item => ({code: item.code, message: item.message}))});
+  const onClientError = record('mqtt');
+  const onSocketError = record('websocket');
+  const socket = worker.client.stream.socket;
+  worker.client.on('error', onClientError);
+  if (socket) socket.on('error', onSocketError);
+  try {
+    await connected;
+  } catch (error) {
+    const stream = worker.client.stream;
+    throw new Error(`${error.message}; connection diagnostics: ${JSON.stringify({
+      protocol: settings.protocol, host: settings.host, errors,
+      connected: worker.client.connected, destroyed: stream.destroyed,
+      authorizationError: stream.authorizationError,
+      remoteAddress: stream.remoteAddress, remoteFamily: stream.remoteFamily
+    })}`, {cause: error});
+  } finally {
+    worker.client.removeListener('error', onClientError);
+    if (socket) socket.removeListener('error', onSocketError);
+  }
 }
 
 async function subscribeWorker(worker, topic, qos) {
@@ -212,9 +236,11 @@ function makeCertificates() {
   }
   try {
     openssl(['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-days', '2', '-subj', '/CN=MQTTBox Test CA',
-      '-keyout', 'ca.key', '-out', 'ca.pem', '-addext', 'basicConstraints=critical,CA:TRUE']);
-    fs.writeFileSync(file('server.ext'), 'subjectAltName=DNS:localhost,IP:127.0.0.1\nextendedKeyUsage=serverAuth\nbasicConstraints=CA:FALSE\n');
-    fs.writeFileSync(file('client.ext'), 'extendedKeyUsage=clientAuth\nbasicConstraints=CA:FALSE\n');
+      '-keyout', 'ca.key', '-out', 'ca.pem', '-addext', 'basicConstraints=critical,CA:TRUE',
+      '-addext', 'keyUsage=critical,keyCertSign,cRLSign', '-addext', 'subjectKeyIdentifier=hash']);
+    const identifiers = 'subjectKeyIdentifier=hash\nauthorityKeyIdentifier=keyid:always\n';
+    fs.writeFileSync(file('server.ext'), 'subjectAltName=DNS:localhost,IP:127.0.0.1\nextendedKeyUsage=serverAuth\nbasicConstraints=CA:FALSE\n' + identifiers);
+    fs.writeFileSync(file('client.ext'), 'extendedKeyUsage=clientAuth\nbasicConstraints=CA:FALSE\n' + identifiers);
     for (const name of ['server', 'client']) {
       openssl(['req', '-new', '-newkey', 'rsa:2048', '-nodes', '-subj', `/CN=${name === 'server' ? 'localhost' : 'mqttbox-client'}`,
         '-keyout', `${name}.key`, '-out', `${name}.csr`]);

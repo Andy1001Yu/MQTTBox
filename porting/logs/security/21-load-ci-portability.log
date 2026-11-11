@@ -1,0 +1,36 @@
+✔ ten concurrent child load workers publish and archive 500 QoS 1 messages each (1829.45425ms)
+ℹ All 5000 messages and archives completed in 1815.4ms; configured overall worker deadline=30s
+✔ username and password authenticate the connection worker before message delivery (14.14575ms)
+✔ an incorrect broker password emits a connection error without authorizing a session (1.167958ms)
+✔ MQTT 3.1 connects with MQIsdp and exchanges QoS 2 messages (1.939041ms)
+✔ abrupt worker process termination publishes and retains its configured last will (80.374083ms)
+✔ the connection worker reconnects and restores wildcard delivery after socket loss (53.938083ms)
+✔ stop ends a QoS 1 load while the broker withholds PUBACK (126.522167ms)
+ℹ ACK held after 15ms; stop completed after 16ms from CONNECTING
+✔ timeout ends a QoS 1 load while the broker withholds PUBACK (2121.16125ms)
+ℹ ACK held after 9ms; timeout completed after 2005ms from CONNECTING
+✔ stop ends a QoS 2 load while the broker withholds PUBCOMP (149.204416ms)
+ℹ ACK held after 9ms; stop completed after 9ms from CONNECTING
+✔ timeout ends a QoS 2 load while the broker withholds PUBCOMP (2121.417792ms)
+ℹ ACK held after 10ms; timeout completed after 2005ms from CONNECTING
+✔ publish load counts 32 real broker messages at numeric QoS 0 (243.582416ms)
+✔ publish load counts 32 real broker messages at numeric QoS 1 (217.00225ms)
+✔ publish load counts 32 real broker messages at numeric QoS 2 (215.43075ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 0 (12.038625ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 1 (11.88475ms)
+✔ subscribe load records 32 delivered payloads at numeric QoS 2 (16.4ms)
+✔ publish load accepts the UI's string QoS '1' (146.901875ms)
+✔ subscribe load accepts the UI's string QoS '1' (84.602334ms)
+✔ publish load accepts the UI's string QoS '2' (138.679375ms)
+✔ subscribe load accepts the UI's string QoS '2' (102.511208ms)
+✔ stopping a running publish load reports partial real counts and ends once (155.107958ms)
+✔ an empty subscribe load times out with zero counts and no completion status (194.367959ms)
+✔ load worker delivers a large complete archive over child IPC before exiting (95.266583ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8450.651708

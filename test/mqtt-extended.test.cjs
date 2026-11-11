@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('node:assert/strict');
+const {performance} = require('node:perf_hooks');
 const { test } = require('node:test');
 const { CLIENT, LOAD, bounded, waitFor, startBroker, clientSettings, observeWorker,
   clientEvent, connectWorker, subscribeWorker, rawClient, publish,
@@ -20,7 +21,7 @@ async function workerRoundTrip(worker, topic, payload, qos = '1') {
   return message;
 }
 
-test('ten concurrent child load workers publish and archive 500 QoS 1 messages each', { timeout: 25000 }, async t => {
+test('ten concurrent child load workers publish and archive 500 QoS 1 messages each', { timeout: 40000 }, async t => {
   const server = await startBroker(t);
   const instanceCount = 10;
   const messagesPerInstance = 500;
@@ -42,20 +43,29 @@ test('ten concurrent child load workers publish and archive 500 QoS 1 messages e
   server.broker.on('clientDisconnect', client => active.delete(client.id));
   const services = Array.from({ length: instanceCount }, () => forkWorker(t, 'PlatformMqttLoadWorkerService'));
   const settings = services.map((_, index) => clientSettings(server, {
-    loadTestType: 'publishing', msgCount: messagesPerInstance, runTime: 1.5, timeOut: 10,
-    connectTimeout: 5000, topic: `concurrent/instance-${index}`, qos: '1',
+    // This is exact-delivery/archival coverage, not a 1.5-second benchmark.
+    // Retain the requested publish interval, with the product's default 30s
+    // overall deadline for cold forks, the connection barrier and real ACKs.
+    loadTestType: 'publishing', msgCount: messagesPerInstance, runTime: 1.5, timeOut: 30,
+    connectTimeout: 10000, topic: `concurrent/instance-${index}`, qos: '1',
     payload: [`instance-${index}:alpha`, `instance-${index}:中文`]
   }));
-  const completed = services.map(service => service.event(LOAD.EVENT_MQTT_LOAD_TEST_ENDED, () => true, 15000));
-  const receivedAll = waitFor(server.broker, 'publish', () => server.packets.length === 5000, 15000)
+  const completed = services.map(service => service.event(LOAD.EVENT_MQTT_LOAD_TEST_ENDED, () => true, 35000));
+  const receivedAll = waitFor(server.broker, 'publish', () => server.packets.length === 5000, 35000)
     .catch(error => { throw new Error(`${error.message}: broker received ${server.packets.length}/5000 messages`); });
   const allResults = Promise.all([...completed, receivedAll]);
+  const startedAt = performance.now();
   for (let index = 0; index < services.length; index++) {
     services[index].child.send({ actionType: LOAD.ACTION_START_MQTT_LOAD_TEST,
       data: { loadObj: settings[index], iId: `concurrent-${index}`, inum: index + 1 } });
   }
-  const results = await allResults;
-  const exits = await Promise.all(services.map(service => service.exited));
+  const {results, exits} = await bounded((async () => ({
+    results: await allResults,
+    exits: await Promise.all(services.map(service => service.exited))
+  }))(), 'all 5000 broker deliveries, complete archives and child exits', 35000);
+  const elapsed = performance.now() - startedAt;
+  assert.ok(elapsed <= 35000, 'the complete ten-worker scenario must stay within its 35-second parent bound');
+  t.diagnostic(`All 5000 messages and archives completed in ${elapsed.toFixed(1)}ms; configured overall worker deadline=30s`);
   assert.equal(maxConcurrent, 10, 'all ten broker connections must overlap');
   assert.equal(server.packets.length, 5000);
   for (let index = 0; index < instanceCount; index++) {
